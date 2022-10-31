@@ -8,4 +8,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="lib\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Queues">
+      <HintPath>lib\Queues.dll</HintPath>
+    </Reference>
+    <Reference Include="Structures">
+      <HintPath>lib\Structures.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
