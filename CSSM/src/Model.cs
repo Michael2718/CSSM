@@ -25,7 +25,7 @@ namespace ComputingSystem {
 		public void WorkingCycle() {
 			clock.WorkingCycle();
 			if(processRand.NextDouble() <= modelSettings.Intensity) {
-				Process proc = new Process(idGen.Id,
+				Process proc = new(idGen.Id,
 					processRand.Next(modelSettings.MinValueOfAddrSpace, modelSettings.MaxValueOfAddrSpace + 1));
 				if(memoryManager.Allocate(proc) != null) {
 
