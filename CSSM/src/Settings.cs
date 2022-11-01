@@ -1,4 +1,4 @@
-﻿namespace ComputingSystem {
+﻿namespace CSSM {
     class Settings {
         public double Intensity { get; set; }
         public int MinValueOfBurstTime { get; set; }

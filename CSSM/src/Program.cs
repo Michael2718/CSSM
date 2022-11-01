@@ -1,4 +1,4 @@
-namespace ComputingSystem {
+namespace CSSM {
     static class Program {
         [STAThread]
         static void Main() {

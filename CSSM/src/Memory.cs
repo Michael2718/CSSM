@@ -1,4 +1,4 @@
-﻿namespace ComputingSystem {
+﻿namespace CSSM {
     class Memory {
         public void Save(long size) {
             Size = size;

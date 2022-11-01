@@ -1,4 +1,4 @@
-﻿namespace ComputingSystem {
+﻿namespace CSSM {
     class MemoryManager {
         public void Save(Memory mem) {
             memory = mem;

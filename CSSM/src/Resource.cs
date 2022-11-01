@@ -1,4 +1,4 @@
-﻿namespace ComputingSystem {
+﻿namespace CSSM {
     class Resource {
         public void WorkingCycle() {
             if(!IsFree()) {
@@ -14,7 +14,7 @@
             activeProcess = null;
         }
 
-        public Process ActiveProcess {
+        public Process? ActiveProcess {
             get {
                 return activeProcess;
             }
@@ -22,6 +22,6 @@
                 activeProcess = value;
             }
         }
-        private Process activeProcess;
+        private Process? activeProcess;
     }
 }

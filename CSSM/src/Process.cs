@@ -1,4 +1,4 @@
-﻿namespace ComputingSystem {
+﻿namespace CSSM {
     enum ProcessStatus {
         ready,
         running,
@@ -7,7 +7,7 @@
     }
     class Process : IComparable<Process> {
 
-        public int CompareTo(Process otherProc) {
+        public int CompareTo(Process? otherProc) {
             if(otherProc == null) {
                 return 1;
             }

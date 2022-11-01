@@ -1,6 +1,6 @@
 ﻿using Queues;
 
-namespace ComputingSystem {
+namespace CSSM {
     class DeviceScheduler {
         public DeviceScheduler(Resource resource, IQueueable<Process> queue) {
             this.resourсe = resource;

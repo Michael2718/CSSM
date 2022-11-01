@@ -1,6 +1,6 @@
 ﻿using Queues;
 
-namespace ComputingSystem {
+namespace CSSM {
     class CPUScheduler {
         public CPUScheduler(Resource resource, IQueueable<Process> queue) {
             this.resource = resource;

@@ -1,4 +1,4 @@
-﻿namespace ComputingSystem {
+﻿namespace CSSM {
     class SystemClock {
         public void WorkingCycle() {
             clock++;

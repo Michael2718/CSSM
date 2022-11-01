@@ -1,7 +1,8 @@
 ﻿using Queues;
 using Structures;
+using System.ComponentModel;
 
-namespace ComputingSystem {
+namespace CSSM {
 	class Model {
 		public Model() {
 			clock = new SystemClock();
@@ -31,7 +32,7 @@ namespace ComputingSystem {
 
 					proc.BurstTime = processRand.Next(modelSettings.MinValueOfBurstTime,
 						modelSettings.MaxValueOfBurstTime + 1);
-					subscribe(proc);
+					Subscribe(proc);
 					readyQueue = readyQueue.Put(proc);
 					if(cpu.IsFree()) {
 						cpuScheduler.Session();
@@ -42,7 +43,7 @@ namespace ComputingSystem {
 			device.WorkingCycle();
 		}
 
-		void Clear() {
+		public void Clear() {
 			cpu.Clear();
 			device.Clear();
 			ram.Clear();
@@ -50,8 +51,8 @@ namespace ComputingSystem {
 			deviceQueue.Clear();
 		}
 
-		private void FreeingResourceEventHandler(object sender, EventArgs e) {
-			Process proc = sender as Process;
+		private void FreeingResourceEventHandler(object? sender, EventArgs e) {
+			Process? proc = sender as Process;
 			if(proc.Status == ProcessStatus.waiting) //Процесс покидает внешнее устройство
 			{
 				device.Clear();
@@ -80,7 +81,7 @@ namespace ComputingSystem {
 						ProcessStatus.waiting;
 				if(proc.Status == ProcessStatus.terminated) {
 					memoryManager.Free(proc);
-					unsubscribe(proc);
+					Unsubscribe(proc);
 				} else {
 					proc.BurstTime = processRand.Next(modelSettings.MinValueOfBurstTime,
 						modelSettings.MaxValueOfBurstTime + 1);
@@ -92,20 +93,21 @@ namespace ComputingSystem {
 				}
 			}
 		}
-		private void subscribe(Process proc) {
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void Subscribe(Process? proc) {
 			if(proc != null) {
 				proc.FreeingAResource += FreeingResourceEventHandler;
 			}
 		}
 
-		private void unsubscribe(Process proc) {
+		private void Unsubscribe(Process? proc) {
 			if(proc != null) {
 				proc.FreeingAResource -= FreeingResourceEventHandler;
 			}
 		}
 
 
-		private SystemClock clock;
+		public readonly SystemClock clock;
 		private Resource cpu;//
 		private Resource device;//
 		private IdGenerator idGen;
@@ -116,7 +118,7 @@ namespace ComputingSystem {
 		private MemoryManager memoryManager;
 		private Settings modelSettings;//
 		private Random processRand;
-		private Memory ram;
+		public readonly Memory ram;
 
 		public IQueueable<Process> ReadyQueue {
 			get { return readyQueue; }
