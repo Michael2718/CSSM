@@ -27,17 +27,6 @@
                 return;
             }
 
-            /*if (Status == ProcessStatus.waiting)
-            {
-                Status = ProcessStatus.ready;
-            }
-
-            else
-            {
-                Status = this.Status = resourceRand.Next(0, 2) == 0 ? ProcessStatus.terminated :
-                    ProcessStatus.waiting;
-            }*/
-
             OnFreeingAResource();
         }
 
@@ -57,7 +46,6 @@
                 FreeingAResource(this, null);
             }
         }
-
 
         public long BurstTime { get; set; }
 

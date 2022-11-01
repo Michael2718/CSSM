@@ -8,7 +8,6 @@ namespace ComputingSystem {
         }
 
         public IQueueable<Process> Session() {
-            // только для пустой очереди
             Process newActiveProcess = queue.Item();
             newActiveProcess.Status = ProcessStatus.running;
             queue.Remove();
