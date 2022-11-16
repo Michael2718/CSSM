@@ -2,6 +2,9 @@
 
 namespace CSSM {
     class CPUScheduler {
+        private Resource resource;
+        private IQueueable<Process> queue;
+
         public CPUScheduler(Resource resource, IQueueable<Process> queue) {
             this.resource = resource;
             this.queue = queue;
@@ -14,8 +17,5 @@ namespace CSSM {
             resource.ActiveProcess = newActiveProcess;
             return queue;
         }
-
-        private Resource resource;
-        private IQueueable<Process> queue;
     }
 }

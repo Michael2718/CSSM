@@ -1,11 +1,4 @@
 ﻿namespace CSSM {
-	enum ModelOperations {
-		SaveSettings,
-		WorkingCycle,
-		EndOfSession,
-		Clear
-	}
-
 	class Controller {
 		public void Execute(ModelOperations operation, Model model) {
 			if(model == null)

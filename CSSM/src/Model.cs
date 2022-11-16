@@ -8,6 +8,8 @@ namespace CSSM {
 			clock = new SystemClock();
 			deviceQueue = new FIFOQueue<Process, SimpleArray<Process>>(new SimpleArray<Process>());
 			readyQueue = new Queues.PriorityQueue<Process, BinaryHeap<Process>>(new BinaryHeap<Process>());
+
+			//q = new Structures.BinarySearchTree
 			modelSettings = new Settings();
 			idGen = new IdGenerator();
 			processRand = new Random();

@@ -2,6 +2,9 @@
 
 namespace CSSM {
     class DeviceScheduler {
+        private Resource resourсe;
+        private IQueueable<Process> queue;
+
         public DeviceScheduler(Resource resource, IQueueable<Process> queue) {
             this.resourсe = resource;
             this.queue = queue;
@@ -13,8 +16,5 @@ namespace CSSM {
             resourсe.ActiveProcess = newActiveProcess;
             return queue;
         }
-
-        private Resource resourсe;
-        private IQueueable<Process> queue;
     }
 }

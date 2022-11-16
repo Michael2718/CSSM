@@ -72,6 +72,12 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.maxCpuSize = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.procIntensity)).BeginInit();
             this.groupBox7.SuspendLayout();
@@ -90,6 +96,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.minCpuSize)).BeginInit();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maxCpuSize)).BeginInit();
+            this.groupBox13.SuspendLayout();
+            this.groupBox14.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbCPU
@@ -187,7 +195,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(161, 20);
             this.label8.TabIndex = 27;
-            this.label8.Text = "Зовнішній пристрій";
+            this.label8.Text = "Зовнішній пристрій 1";
             // 
             // label9
             // 
@@ -199,7 +207,7 @@
             // 
             // label10
             // 
-            this.label10.Location = new System.Drawing.Point(486, 252);
+            this.label10.Location = new System.Drawing.Point(18, 376);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(248, 21);
             this.label10.TabIndex = 29;
@@ -341,11 +349,11 @@
             // 
             this.groupBox11.Controls.Add(this.queueToCPU);
             this.groupBox11.Controls.Add(this.label9);
-            this.groupBox11.Location = new System.Drawing.Point(10, 252);
+            this.groupBox11.Location = new System.Drawing.Point(10, 229);
             this.groupBox11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox11.Size = new System.Drawing.Size(462, 260);
+            this.groupBox11.Size = new System.Drawing.Size(462, 96);
             this.groupBox11.TabIndex = 44;
             this.groupBox11.TabStop = false;
             // 
@@ -355,17 +363,17 @@
             this.queueToCPU.ItemHeight = 20;
             this.queueToCPU.Location = new System.Drawing.Point(6, 27);
             this.queueToCPU.Name = "queueToCPU";
-            this.queueToCPU.Size = new System.Drawing.Size(434, 224);
+            this.queueToCPU.Size = new System.Drawing.Size(434, 44);
             this.queueToCPU.TabIndex = 29;
             // 
             // groupBox12
             // 
             this.groupBox12.Controls.Add(this.queueToDevice);
-            this.groupBox12.Location = new System.Drawing.Point(478, 252);
+            this.groupBox12.Location = new System.Drawing.Point(10, 376);
             this.groupBox12.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox12.Size = new System.Drawing.Size(462, 260);
+            this.groupBox12.Size = new System.Drawing.Size(462, 101);
             this.groupBox12.TabIndex = 45;
             this.groupBox12.TabStop = false;
             // 
@@ -375,7 +383,7 @@
             this.queueToDevice.ItemHeight = 20;
             this.queueToDevice.Location = new System.Drawing.Point(6, 27);
             this.queueToDevice.Name = "queueToDevice";
-            this.queueToDevice.Size = new System.Drawing.Size(434, 224);
+            this.queueToDevice.Size = new System.Drawing.Size(434, 64);
             this.queueToDevice.TabIndex = 29;
             // 
             // groupBox2
@@ -513,11 +521,71 @@
             this.label6.TabIndex = 20;
             this.label6.Text = "Максимальний розмір адресного простору процесу";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(6, 28);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(431, 27);
+            this.textBox1.TabIndex = 3;
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.label15);
+            this.groupBox13.Controls.Add(this.textBox1);
+            this.groupBox13.Location = new System.Drawing.Point(478, 278);
+            this.groupBox13.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox13.Size = new System.Drawing.Size(462, 66);
+            this.groupBox13.TabIndex = 43;
+            this.groupBox13.TabStop = false;
+            // 
+            // label15
+            // 
+            this.label15.Location = new System.Drawing.Point(8, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(161, 20);
+            this.label15.TabIndex = 27;
+            this.label15.Text = "Зовнішній пристрій 2";
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.label16);
+            this.groupBox14.Controls.Add(this.textBox2);
+            this.groupBox14.Location = new System.Drawing.Point(478, 403);
+            this.groupBox14.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox14.Size = new System.Drawing.Size(462, 66);
+            this.groupBox14.TabIndex = 43;
+            this.groupBox14.TabStop = false;
+            // 
+            // label16
+            // 
+            this.label16.Location = new System.Drawing.Point(8, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(161, 20);
+            this.label16.TabIndex = 27;
+            this.label16.Text = "Зовнішній пристрій 3";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(6, 28);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(431, 27);
+            this.textBox2.TabIndex = 3;
+            // 
             // FrmDetailed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(950, 709);
+            this.Controls.Add(this.groupBox14);
+            this.Controls.Add(this.groupBox13);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.groupBox12);
             this.Controls.Add(this.groupBox11);
@@ -555,6 +623,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.minCpuSize)).EndInit();
             this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.maxCpuSize)).EndInit();
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
             this.ResumeLayout(false);
 
 		}
@@ -605,6 +677,12 @@
         private Label labelTime;
         private Label labelOccupiedRAM;
         private Label labelFreeRAM;
+        private TextBox textBox1;
+        private GroupBox groupBox13;
+        private Label label15;
+        private GroupBox groupBox14;
+        private Label label16;
+        private TextBox textBox2;
     }
 }
 
