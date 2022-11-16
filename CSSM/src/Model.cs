@@ -30,7 +30,7 @@ namespace CSSM {
 			if(processRand.NextDouble() <= modelSettings.Intensity) {
 				Process proc = new(idGen.Id,
 					processRand.Next(modelSettings.MinValueOfAddrSpace, modelSettings.MaxValueOfAddrSpace + 1));
-				if(memoryManager.Allocate(proc) != null) {
+				if(memoryManager.Allocate(proc.AddrSpace) != null) {
 
 					proc.BurstTime = processRand.Next(modelSettings.MinValueOfBurstTime,
 						modelSettings.MaxValueOfBurstTime + 1);
@@ -82,12 +82,12 @@ namespace CSSM {
 				proc.Status = processRand.Next(0, 2) == 0 ? ProcessStatus.terminated :
 						ProcessStatus.waiting;
 				if(proc.Status == ProcessStatus.terminated) {
-					memoryManager.Free(proc);
+					memoryManager.Free(proc.AddrSpace);
 					Unsubscribe(proc);
 				} else {
 					proc.BurstTime = processRand.Next(modelSettings.MinValueOfBurstTime,
 						modelSettings.MaxValueOfBurstTime + 1);
-					proc.ResetWorkTime();
+					proc.ResetWorkTime();	
 					deviceQueue = deviceQueue.Put(proc);
 					if(device.IsFree()) {
 						deviceQueue = deviceScheduler.Session();

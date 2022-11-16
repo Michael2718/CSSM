@@ -2,7 +2,6 @@
     enum ModelOperations {
         SaveSettings,
         WorkingCycle,
-        EndOfSession,
         Clear
     }
 }
