@@ -20,7 +20,7 @@ namespace CSSM {
                 workTime++;
                 return;
             } else if (workTime == BurstTime) {
-/*                if (Status == ProcessStatus.running) {
+                if(Status == ProcessStatus.running) {
                     Status = random.Next(0, 2) == 0 ? ProcessStatus.terminated : ProcessStatus.waiting;
                     if(Status == ProcessStatus.waiting) {
                         newEventArgs.DeviceNumber = (int)random.Next(1, 3);
@@ -30,7 +30,7 @@ namespace CSSM {
                 } else {
                     Status = ProcessStatus.ready;
                 }
-                OnFreeingAResource(newEventArgs);*/
+                OnFreeingAResource(newEventArgs);
             }
         }
 
@@ -39,8 +39,8 @@ namespace CSSM {
         }
 
         public override string ToString() {
-            return "Proc: " + id + ' ' + "BurstTime: " + BurstTime + ' ' + "WorkTime: "
-                + workTime + ' ' + "Status: " + Status;
+            return "Proc: " + name + ' ' + id + " BurstTime: " + BurstTime + " WorkTime: "
+                + workTime + " Status: " + Status;
         }
         public int CompareTo(Process? otherProc) {
             if(otherProc == null) {
@@ -49,21 +49,18 @@ namespace CSSM {
             return otherProc.BurstTime.CompareTo(BurstTime);
         }
 
-        public event EventHandler FreeingAResource;
-
-        private void OnFreeingAResource() {
-            if(FreeingAResource != null) {
-                FreeingAResource(this, null);
-            }
+        private void OnFreeingAResource(NewEventArgs? e = null) {
+            FreeingAResource?.Invoke(this, e);
         }
-
-        public long BurstTime { get; set; }
-        public ProcessStatus Status { get; set; }
-        public long AddrSpace { get; private set; }
         private long id;
         private string name;
         private long workTime;
+        public long BurstTime { get; set; }
+        public ProcessStatus Status { get; set; }
+        public long AddrSpace { get; private set; }
+
         private Random random = new Random();
         NewEventArgs newEventArgs = new NewEventArgs();
+        public event EventHandler FreeingAResource;
     }
 }
