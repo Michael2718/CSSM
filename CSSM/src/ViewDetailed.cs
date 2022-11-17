@@ -3,8 +3,7 @@ using System.ComponentModel;
 
 namespace CSSM {
 	class ViewDetailed : View {
-		public ViewDetailed(Model model, Controller controller, FrmDetailed frm)
-				: base(model, controller) {
+		public ViewDetailed(Model model, Controller controller, FrmDetailed frm) : base(model, controller) {
 			this.frm = frm;
 		}
 
@@ -53,27 +52,26 @@ namespace CSSM {
             frm.RamSize.DataBindings.RemoveAt(0);
             Unsubscribe();
         }
-
-		private FrmDetailed frm;
-
-        // подписчик
         private void Subscribe() {
             model.PropertyChanged += PropertyChangedHandler;
         }
-		private void Unsubscribe() { }
-		private void PropertyChangedHandler(object? sender,
-            PropertyChangedEventArgs e) {
+		private void Unsubscribe() {
+            model.PropertyChanged -= PropertyChangedHandler;
+        }
+		private void PropertyChangedHandler(object? sender, PropertyChangedEventArgs e) {
 /*            if(e.PropertyName == "ReadyQueue") {
-                updateListBox(model.ReadyQueue, frm.LbCPUQueue);
+                SortedUnsorterQueue<Process> temp = (SortedUnsorterQueue<Process>)model.ReadyQueue;
+                updateListBox(temp.Sorted, frm.LblSortedCPUQueue);
+                updateListBox(temp.Unsorted, frm.LblUnsortedCPUQueue);
             } else {
-                updateListBox(model.DeviceQueue, frm.LbDeviceQueue);
+                updateListBox(model.DeviceQueue, frm.LblDeviceQueue);
+                updateListBox(model.DeviceQueue_2, frm.LblDeviceQueue_2);
             }*/
-
         }
 
-        private void updateListBox(
-				IQueueable<Process> queue, ListBox lb) { }
-	}
+        private void UpdateListBox( IQueueable<Process> queue, ListBox lb) { }
+        private FrmDetailed frm;
+    }
 
 }
 
