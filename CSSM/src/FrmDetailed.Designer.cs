@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+            this.components = new System.ComponentModel.Container();
             this.tbCPU = new System.Windows.Forms.TextBox();
             this.tbDevice1 = new System.Windows.Forms.TextBox();
             this.bSaveSettings = new System.Windows.Forms.Button();
@@ -50,7 +51,7 @@
             this.lblOccupiedRam = new System.Windows.Forms.Label();
             this.lblFreeRam = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.labelTime = new System.Windows.Forms.Label();
+            this.lblTime = new System.Windows.Forms.Label();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
@@ -64,6 +65,7 @@
             this.nudMaxBurstTime = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cbRamSize = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.nudMinAddrSpace = new System.Windows.Forms.NumericUpDown();
@@ -83,7 +85,7 @@
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.lblDeviceQueue3 = new System.Windows.Forms.ListBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.cbRamSize = new System.Windows.Forms.ComboBox();
+            this.timerAutoMode = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudProcIntensity)).BeginInit();
             this.groupBox7.SuspendLayout();
@@ -135,6 +137,7 @@
             this.bSaveSettings.TabIndex = 11;
             this.bSaveSettings.Text = "Зберігти налаштування";
             this.bSaveSettings.UseVisualStyleBackColor = true;
+            this.bSaveSettings.Click += new System.EventHandler(this.bSaveSettings_Click);
             // 
             // bWorkingCycle
             // 
@@ -145,7 +148,7 @@
             this.bWorkingCycle.TabIndex = 12;
             this.bWorkingCycle.Text = "Робочий такт";
             this.bWorkingCycle.UseVisualStyleBackColor = true;
-            this.bWorkingCycle.Click += new System.EventHandler(this.workingCycle_Click);
+            this.bWorkingCycle.Click += new System.EventHandler(this.bWorkingCycle_Click);
             // 
             // bClear
             // 
@@ -156,6 +159,7 @@
             this.bClear.TabIndex = 13;
             this.bClear.Text = "Очищення";
             this.bClear.UseVisualStyleBackColor = true;
+            this.bClear.Click += new System.EventHandler(this.bClear_Click);
             // 
             // rbManualMode
             // 
@@ -305,7 +309,7 @@
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.labelTime);
+            this.groupBox8.Controls.Add(this.lblTime);
             this.groupBox8.Controls.Add(this.label14);
             this.groupBox8.Controls.Add(this.rbAutoMode);
             this.groupBox8.Controls.Add(this.rbManualMode);
@@ -320,14 +324,14 @@
             this.groupBox8.TabIndex = 41;
             this.groupBox8.TabStop = false;
             // 
-            // labelTime
+            // lblTime
             // 
-            this.labelTime.AutoSize = true;
-            this.labelTime.Location = new System.Drawing.Point(42, 48);
-            this.labelTime.Name = "labelTime";
-            this.labelTime.Size = new System.Drawing.Size(17, 20);
-            this.labelTime.TabIndex = 34;
-            this.labelTime.Text = "0";
+            this.lblTime.AutoSize = true;
+            this.lblTime.Location = new System.Drawing.Point(42, 48);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(17, 20);
+            this.lblTime.TabIndex = 34;
+            this.lblTime.Text = "0";
             // 
             // groupBox9
             // 
@@ -461,6 +465,14 @@
             this.groupBox4.Size = new System.Drawing.Size(150, 147);
             this.groupBox4.TabIndex = 34;
             this.groupBox4.TabStop = false;
+            // 
+            // cbRamSize
+            // 
+            this.cbRamSize.FormattingEnabled = true;
+            this.cbRamSize.Location = new System.Drawing.Point(6, 109);
+            this.cbRamSize.Name = "cbRamSize";
+            this.cbRamSize.Size = new System.Drawing.Size(138, 28);
+            this.cbRamSize.TabIndex = 21;
             // 
             // label4
             // 
@@ -642,14 +654,6 @@
             this.label18.TabIndex = 29;
             this.label18.Text = "Черга до зовнішнього пристрою 1";
             // 
-            // cbRamSize
-            // 
-            this.cbRamSize.FormattingEnabled = true;
-            this.cbRamSize.Location = new System.Drawing.Point(6, 109);
-            this.cbRamSize.Name = "cbRamSize";
-            this.cbRamSize.Size = new System.Drawing.Size(138, 28);
-            this.cbRamSize.TabIndex = 21;
-            // 
             // FrmDetailed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -746,7 +750,7 @@
 		private NumericUpDown nudMaxAddrSpace;
         private ListBox lblCPUQueue;
         private ListBox lblDeviceQueue1;
-        private Label labelTime;
+        private Label lblTime;
         private Label lblOccupiedRam;
         private Label lblFreeRam;
         private TextBox tbDevice2;
@@ -762,6 +766,7 @@
         private ListBox lblDeviceQueue3;
         private Label label18;
         private ComboBox cbRamSize;
+        private System.Windows.Forms.Timer timerAutoMode;
     }
 }
 
