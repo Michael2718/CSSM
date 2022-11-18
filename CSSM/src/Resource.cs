@@ -5,7 +5,7 @@ namespace CSSM {
     class Resource : INotifyPropertyChanged {
         private Process? activeProcess;
         public Process? ActiveProcess {
-            get { return activeProcess; }
+            get => activeProcess;
             set {
                 activeProcess = value;
                 OnPropertyChanged();

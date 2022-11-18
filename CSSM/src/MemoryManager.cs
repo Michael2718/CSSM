@@ -17,5 +17,5 @@
             memory.OccupiedSize -= size;
             return memory;
         }
-    }   
+    }
 }

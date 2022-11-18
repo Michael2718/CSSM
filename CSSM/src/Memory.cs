@@ -9,11 +9,11 @@ namespace CSSM {
             private set;
         }
         public long FreeSize {
-            get { return Size - occupiedSize; }
+            get => Size - occupiedSize;
             private set { }
         }
         public long OccupiedSize {
-            get { return occupiedSize; }
+            get => occupiedSize;
             set {
                 occupiedSize = value;
                 FreeSize = Size - occupiedSize;
