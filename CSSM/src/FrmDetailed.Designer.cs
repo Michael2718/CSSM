@@ -29,12 +29,12 @@
 		private void InitializeComponent()
 		{
             this.tbCPU = new System.Windows.Forms.TextBox();
-            this.tbDevice = new System.Windows.Forms.TextBox();
-            this.save = new System.Windows.Forms.Button();
-            this.workingCycle = new System.Windows.Forms.Button();
-            this.end = new System.Windows.Forms.Button();
-            this.manualMode = new System.Windows.Forms.RadioButton();
-            this.autoMode = new System.Windows.Forms.RadioButton();
+            this.tbDevice1 = new System.Windows.Forms.TextBox();
+            this.bSaveSettings = new System.Windows.Forms.Button();
+            this.bWorkingCycle = new System.Windows.Forms.Button();
+            this.bClear = new System.Windows.Forms.Button();
+            this.rbManualMode = new System.Windows.Forms.RadioButton();
+            this.rbAutoMode = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -45,41 +45,47 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.procIntensity = new System.Windows.Forms.NumericUpDown();
+            this.nudProcIntensity = new System.Windows.Forms.NumericUpDown();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.labelOccupiedRAM = new System.Windows.Forms.Label();
-            this.labelFreeRAM = new System.Windows.Forms.Label();
+            this.lblOccupiedRam = new System.Windows.Forms.Label();
+            this.lblFreeRam = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.labelTime = new System.Windows.Forms.Label();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.queueToCPU = new System.Windows.Forms.ListBox();
+            this.lblCPUQueue = new System.Windows.Forms.ListBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.queueToDevice = new System.Windows.Forms.ListBox();
+            this.lblDeviceQueue1 = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.minBurstTime = new System.Windows.Forms.NumericUpDown();
+            this.nudMinBurstTime = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.maxBurstTime = new System.Windows.Forms.NumericUpDown();
+            this.nudMaxBurstTime = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.ramSize = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.minCpuSize = new System.Windows.Forms.NumericUpDown();
+            this.nudMinAddrSpace = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.maxCpuSize = new System.Windows.Forms.NumericUpDown();
+            this.nudMaxAddrSpace = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbDevice2 = new System.Windows.Forms.TextBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbDevice3 = new System.Windows.Forms.TextBox();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.lblDeviceQueue2 = new System.Windows.Forms.ListBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.lblDeviceQueue3 = new System.Windows.Forms.ListBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.cbRamSize = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.procIntensity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudProcIntensity)).BeginInit();
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -87,91 +93,93 @@
             this.groupBox11.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.minBurstTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMinBurstTime)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.maxBurstTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMaxBurstTime)).BeginInit();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ramSize)).BeginInit();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.minCpuSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMinAddrSpace)).BeginInit();
             this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.maxCpuSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMaxAddrSpace)).BeginInit();
             this.groupBox13.SuspendLayout();
             this.groupBox14.SuspendLayout();
+            this.groupBox15.SuspendLayout();
+            this.groupBox16.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbCPU
             // 
-            this.tbCPU.Location = new System.Drawing.Point(6, 28);
+            this.tbCPU.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tbCPU.Location = new System.Drawing.Point(6, 58);
             this.tbCPU.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbCPU.Name = "tbCPU";
             this.tbCPU.ReadOnly = true;
             this.tbCPU.Size = new System.Drawing.Size(434, 27);
             this.tbCPU.TabIndex = 2;
             // 
-            // tbDevice
+            // tbDevice1
             // 
-            this.tbDevice.Location = new System.Drawing.Point(6, 28);
-            this.tbDevice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tbDevice.Name = "tbDevice";
-            this.tbDevice.ReadOnly = true;
-            this.tbDevice.Size = new System.Drawing.Size(431, 27);
-            this.tbDevice.TabIndex = 3;
+            this.tbDevice1.Location = new System.Drawing.Point(6, 28);
+            this.tbDevice1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbDevice1.Name = "tbDevice1";
+            this.tbDevice1.ReadOnly = true;
+            this.tbDevice1.Size = new System.Drawing.Size(431, 27);
+            this.tbDevice1.TabIndex = 3;
             // 
-            // save
+            // bSaveSettings
             // 
-            this.save.Location = new System.Drawing.Point(541, 28);
-            this.save.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.save.Name = "save";
-            this.save.Size = new System.Drawing.Size(125, 61);
-            this.save.TabIndex = 11;
-            this.save.Text = "Зберігти налаштування";
-            this.save.UseVisualStyleBackColor = true;
+            this.bSaveSettings.Location = new System.Drawing.Point(541, 28);
+            this.bSaveSettings.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.bSaveSettings.Name = "bSaveSettings";
+            this.bSaveSettings.Size = new System.Drawing.Size(125, 61);
+            this.bSaveSettings.TabIndex = 11;
+            this.bSaveSettings.Text = "Зберігти налаштування";
+            this.bSaveSettings.UseVisualStyleBackColor = true;
             // 
-            // workingCycle
+            // bWorkingCycle
             // 
-            this.workingCycle.Location = new System.Drawing.Point(672, 28);
-            this.workingCycle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.workingCycle.Name = "workingCycle";
-            this.workingCycle.Size = new System.Drawing.Size(126, 61);
-            this.workingCycle.TabIndex = 12;
-            this.workingCycle.Text = "Робочий такт";
-            this.workingCycle.UseVisualStyleBackColor = true;
-            this.workingCycle.Click += new System.EventHandler(this.workingCycle_Click);
+            this.bWorkingCycle.Location = new System.Drawing.Point(672, 28);
+            this.bWorkingCycle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.bWorkingCycle.Name = "bWorkingCycle";
+            this.bWorkingCycle.Size = new System.Drawing.Size(126, 61);
+            this.bWorkingCycle.TabIndex = 12;
+            this.bWorkingCycle.Text = "Робочий такт";
+            this.bWorkingCycle.UseVisualStyleBackColor = true;
+            this.bWorkingCycle.Click += new System.EventHandler(this.workingCycle_Click);
             // 
-            // end
+            // bClear
             // 
-            this.end.Location = new System.Drawing.Point(804, 28);
-            this.end.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.end.Name = "end";
-            this.end.Size = new System.Drawing.Size(120, 61);
-            this.end.TabIndex = 13;
-            this.end.Text = "Завершення роботи";
-            this.end.UseVisualStyleBackColor = true;
+            this.bClear.Location = new System.Drawing.Point(804, 28);
+            this.bClear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.bClear.Name = "bClear";
+            this.bClear.Size = new System.Drawing.Size(120, 61);
+            this.bClear.TabIndex = 13;
+            this.bClear.Text = "Очищення";
+            this.bClear.UseVisualStyleBackColor = true;
             // 
-            // manualMode
+            // rbManualMode
             // 
-            this.manualMode.AutoSize = true;
-            this.manualMode.Location = new System.Drawing.Point(109, 61);
-            this.manualMode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.manualMode.Name = "manualMode";
-            this.manualMode.Size = new System.Drawing.Size(80, 24);
-            this.manualMode.TabIndex = 15;
-            this.manualMode.TabStop = true;
-            this.manualMode.Text = "Ручний";
-            this.manualMode.UseVisualStyleBackColor = true;
+            this.rbManualMode.AutoSize = true;
+            this.rbManualMode.Location = new System.Drawing.Point(109, 61);
+            this.rbManualMode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rbManualMode.Name = "rbManualMode";
+            this.rbManualMode.Size = new System.Drawing.Size(80, 24);
+            this.rbManualMode.TabIndex = 15;
+            this.rbManualMode.TabStop = true;
+            this.rbManualMode.Text = "Ручний";
+            this.rbManualMode.UseVisualStyleBackColor = true;
             // 
-            // autoMode
+            // rbAutoMode
             // 
-            this.autoMode.AutoSize = true;
-            this.autoMode.Location = new System.Drawing.Point(192, 61);
-            this.autoMode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.autoMode.Name = "autoMode";
-            this.autoMode.Size = new System.Drawing.Size(132, 24);
-            this.autoMode.TabIndex = 16;
-            this.autoMode.TabStop = true;
-            this.autoMode.Text = "Автоматичний";
-            this.autoMode.UseVisualStyleBackColor = true;
+            this.rbAutoMode.AutoSize = true;
+            this.rbAutoMode.Location = new System.Drawing.Point(192, 61);
+            this.rbAutoMode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rbAutoMode.Name = "rbAutoMode";
+            this.rbAutoMode.Size = new System.Drawing.Size(132, 24);
+            this.rbAutoMode.TabIndex = 16;
+            this.rbAutoMode.TabStop = true;
+            this.rbAutoMode.Text = "Автоматичний";
+            this.rbAutoMode.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -207,11 +215,11 @@
             // 
             // label10
             // 
-            this.label10.Location = new System.Drawing.Point(18, 376);
+            this.label10.Location = new System.Drawing.Point(9, 3);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(248, 21);
+            this.label10.Size = new System.Drawing.Size(253, 21);
             this.label10.TabIndex = 29;
-            this.label10.Text = "Черга до зовнішнього пристрою";
+            this.label10.Text = "Черга до зовнішнього пристрою 1";
             // 
             // label11
             // 
@@ -247,7 +255,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.procIntensity);
+            this.groupBox1.Controls.Add(this.nudProcIntensity);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(10, 0);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -257,18 +265,18 @@
             this.groupBox1.TabIndex = 34;
             this.groupBox1.TabStop = false;
             // 
-            // procIntensity
+            // nudProcIntensity
             // 
-            this.procIntensity.Location = new System.Drawing.Point(6, 110);
-            this.procIntensity.Name = "procIntensity";
-            this.procIntensity.Size = new System.Drawing.Size(138, 27);
-            this.procIntensity.TabIndex = 21;
+            this.nudProcIntensity.Location = new System.Drawing.Point(6, 110);
+            this.nudProcIntensity.Name = "nudProcIntensity";
+            this.nudProcIntensity.Size = new System.Drawing.Size(138, 27);
+            this.nudProcIntensity.TabIndex = 21;
             // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.label13);
-            this.groupBox7.Controls.Add(this.labelOccupiedRAM);
-            this.groupBox7.Controls.Add(this.labelFreeRAM);
+            this.groupBox7.Controls.Add(this.lblOccupiedRam);
+            this.groupBox7.Controls.Add(this.lblFreeRam);
             this.groupBox7.Controls.Add(this.label12);
             this.groupBox7.Controls.Add(this.label11);
             this.groupBox7.Location = new System.Drawing.Point(10, 520);
@@ -279,31 +287,31 @@
             this.groupBox7.TabIndex = 40;
             this.groupBox7.TabStop = false;
             // 
-            // labelOccupiedRAM
+            // lblOccupiedRam
             // 
-            this.labelOccupiedRAM.Location = new System.Drawing.Point(750, 27);
-            this.labelOccupiedRAM.Name = "labelOccupiedRAM";
-            this.labelOccupiedRAM.Size = new System.Drawing.Size(114, 27);
-            this.labelOccupiedRAM.TabIndex = 31;
-            this.labelOccupiedRAM.Text = "0";
+            this.lblOccupiedRam.Location = new System.Drawing.Point(750, 27);
+            this.lblOccupiedRam.Name = "lblOccupiedRam";
+            this.lblOccupiedRam.Size = new System.Drawing.Size(114, 27);
+            this.lblOccupiedRam.TabIndex = 31;
+            this.lblOccupiedRam.Text = "0";
             // 
-            // labelFreeRAM
+            // lblFreeRam
             // 
-            this.labelFreeRAM.Location = new System.Drawing.Point(192, 27);
-            this.labelFreeRAM.Name = "labelFreeRAM";
-            this.labelFreeRAM.Size = new System.Drawing.Size(114, 27);
-            this.labelFreeRAM.TabIndex = 31;
-            this.labelFreeRAM.Text = "0";
+            this.lblFreeRam.Location = new System.Drawing.Point(192, 27);
+            this.lblFreeRam.Name = "lblFreeRam";
+            this.lblFreeRam.Size = new System.Drawing.Size(114, 27);
+            this.lblFreeRam.TabIndex = 31;
+            this.lblFreeRam.Text = "0";
             // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.labelTime);
             this.groupBox8.Controls.Add(this.label14);
-            this.groupBox8.Controls.Add(this.autoMode);
-            this.groupBox8.Controls.Add(this.manualMode);
-            this.groupBox8.Controls.Add(this.end);
-            this.groupBox8.Controls.Add(this.workingCycle);
-            this.groupBox8.Controls.Add(this.save);
+            this.groupBox8.Controls.Add(this.rbAutoMode);
+            this.groupBox8.Controls.Add(this.rbManualMode);
+            this.groupBox8.Controls.Add(this.bClear);
+            this.groupBox8.Controls.Add(this.bWorkingCycle);
+            this.groupBox8.Controls.Add(this.bSaveSettings);
             this.groupBox8.Location = new System.Drawing.Point(10, 595);
             this.groupBox8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox8.Name = "groupBox8";
@@ -324,8 +332,8 @@
             // groupBox9
             // 
             this.groupBox9.Controls.Add(this.label8);
-            this.groupBox9.Controls.Add(this.tbDevice);
-            this.groupBox9.Location = new System.Drawing.Point(478, 155);
+            this.groupBox9.Controls.Add(this.tbDevice1);
+            this.groupBox9.Location = new System.Drawing.Point(478, 287);
             this.groupBox9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -337,58 +345,60 @@
             // 
             this.groupBox10.Controls.Add(this.label7);
             this.groupBox10.Controls.Add(this.tbCPU);
-            this.groupBox10.Location = new System.Drawing.Point(10, 155);
+            this.groupBox10.Location = new System.Drawing.Point(478, 155);
             this.groupBox10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox10.Size = new System.Drawing.Size(462, 66);
+            this.groupBox10.Size = new System.Drawing.Size(462, 124);
             this.groupBox10.TabIndex = 43;
             this.groupBox10.TabStop = false;
             // 
             // groupBox11
             // 
-            this.groupBox11.Controls.Add(this.queueToCPU);
+            this.groupBox11.Controls.Add(this.lblCPUQueue);
             this.groupBox11.Controls.Add(this.label9);
-            this.groupBox11.Location = new System.Drawing.Point(10, 229);
+            this.groupBox11.Location = new System.Drawing.Point(10, 155);
             this.groupBox11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox11.Size = new System.Drawing.Size(462, 96);
+            this.groupBox11.Size = new System.Drawing.Size(462, 124);
             this.groupBox11.TabIndex = 44;
             this.groupBox11.TabStop = false;
             // 
-            // queueToCPU
+            // lblCPUQueue
             // 
-            this.queueToCPU.FormattingEnabled = true;
-            this.queueToCPU.ItemHeight = 20;
-            this.queueToCPU.Location = new System.Drawing.Point(6, 27);
-            this.queueToCPU.Name = "queueToCPU";
-            this.queueToCPU.Size = new System.Drawing.Size(434, 44);
-            this.queueToCPU.TabIndex = 29;
+            this.lblCPUQueue.FormattingEnabled = true;
+            this.lblCPUQueue.ItemHeight = 20;
+            this.lblCPUQueue.Location = new System.Drawing.Point(6, 27);
+            this.lblCPUQueue.Name = "lblCPUQueue";
+            this.lblCPUQueue.Size = new System.Drawing.Size(450, 84);
+            this.lblCPUQueue.TabIndex = 29;
             // 
             // groupBox12
             // 
-            this.groupBox12.Controls.Add(this.queueToDevice);
-            this.groupBox12.Location = new System.Drawing.Point(10, 376);
+            this.groupBox12.Controls.Add(this.lblDeviceQueue1);
+            this.groupBox12.Controls.Add(this.label10);
+            this.groupBox12.Location = new System.Drawing.Point(10, 287);
             this.groupBox12.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox12.Size = new System.Drawing.Size(462, 101);
+            this.groupBox12.Size = new System.Drawing.Size(462, 66);
             this.groupBox12.TabIndex = 45;
             this.groupBox12.TabStop = false;
             // 
-            // queueToDevice
+            // lblDeviceQueue1
             // 
-            this.queueToDevice.FormattingEnabled = true;
-            this.queueToDevice.ItemHeight = 20;
-            this.queueToDevice.Location = new System.Drawing.Point(6, 27);
-            this.queueToDevice.Name = "queueToDevice";
-            this.queueToDevice.Size = new System.Drawing.Size(434, 64);
-            this.queueToDevice.TabIndex = 29;
+            this.lblDeviceQueue1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblDeviceQueue1.FormattingEnabled = true;
+            this.lblDeviceQueue1.ItemHeight = 20;
+            this.lblDeviceQueue1.Location = new System.Drawing.Point(6, 27);
+            this.lblDeviceQueue1.Name = "lblDeviceQueue1";
+            this.lblDeviceQueue1.Size = new System.Drawing.Size(450, 24);
+            this.lblDeviceQueue1.TabIndex = 29;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.minBurstTime);
+            this.groupBox2.Controls.Add(this.nudMinBurstTime);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(166, 0);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -398,12 +408,12 @@
             this.groupBox2.TabIndex = 34;
             this.groupBox2.TabStop = false;
             // 
-            // minBurstTime
+            // nudMinBurstTime
             // 
-            this.minBurstTime.Location = new System.Drawing.Point(6, 110);
-            this.minBurstTime.Name = "minBurstTime";
-            this.minBurstTime.Size = new System.Drawing.Size(138, 27);
-            this.minBurstTime.TabIndex = 21;
+            this.nudMinBurstTime.Location = new System.Drawing.Point(6, 110);
+            this.nudMinBurstTime.Name = "nudMinBurstTime";
+            this.nudMinBurstTime.Size = new System.Drawing.Size(138, 27);
+            this.nudMinBurstTime.TabIndex = 21;
             // 
             // label2
             // 
@@ -415,7 +425,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.maxBurstTime);
+            this.groupBox3.Controls.Add(this.nudMaxBurstTime);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Location = new System.Drawing.Point(322, 0);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -425,12 +435,12 @@
             this.groupBox3.TabIndex = 34;
             this.groupBox3.TabStop = false;
             // 
-            // maxBurstTime
+            // nudMaxBurstTime
             // 
-            this.maxBurstTime.Location = new System.Drawing.Point(6, 110);
-            this.maxBurstTime.Name = "maxBurstTime";
-            this.maxBurstTime.Size = new System.Drawing.Size(138, 27);
-            this.maxBurstTime.TabIndex = 21;
+            this.nudMaxBurstTime.Location = new System.Drawing.Point(6, 110);
+            this.nudMaxBurstTime.Name = "nudMaxBurstTime";
+            this.nudMaxBurstTime.Size = new System.Drawing.Size(138, 27);
+            this.nudMaxBurstTime.TabIndex = 21;
             // 
             // label3
             // 
@@ -442,7 +452,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.ramSize);
+            this.groupBox4.Controls.Add(this.cbRamSize);
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Location = new System.Drawing.Point(478, 0);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -451,13 +461,6 @@
             this.groupBox4.Size = new System.Drawing.Size(150, 147);
             this.groupBox4.TabIndex = 34;
             this.groupBox4.TabStop = false;
-            // 
-            // ramSize
-            // 
-            this.ramSize.Location = new System.Drawing.Point(6, 110);
-            this.ramSize.Name = "ramSize";
-            this.ramSize.Size = new System.Drawing.Size(138, 27);
-            this.ramSize.TabIndex = 21;
             // 
             // label4
             // 
@@ -469,7 +472,7 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.minCpuSize);
+            this.groupBox5.Controls.Add(this.nudMinAddrSpace);
             this.groupBox5.Controls.Add(this.label5);
             this.groupBox5.Location = new System.Drawing.Point(634, 0);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -479,12 +482,12 @@
             this.groupBox5.TabIndex = 34;
             this.groupBox5.TabStop = false;
             // 
-            // minCpuSize
+            // nudMinAddrSpace
             // 
-            this.minCpuSize.Location = new System.Drawing.Point(6, 110);
-            this.minCpuSize.Name = "minCpuSize";
-            this.minCpuSize.Size = new System.Drawing.Size(138, 27);
-            this.minCpuSize.TabIndex = 21;
+            this.nudMinAddrSpace.Location = new System.Drawing.Point(6, 110);
+            this.nudMinAddrSpace.Name = "nudMinAddrSpace";
+            this.nudMinAddrSpace.Size = new System.Drawing.Size(138, 27);
+            this.nudMinAddrSpace.TabIndex = 21;
             // 
             // label5
             // 
@@ -496,7 +499,7 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.maxCpuSize);
+            this.groupBox6.Controls.Add(this.nudMaxAddrSpace);
             this.groupBox6.Controls.Add(this.label6);
             this.groupBox6.Location = new System.Drawing.Point(790, 0);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -506,12 +509,12 @@
             this.groupBox6.TabIndex = 34;
             this.groupBox6.TabStop = false;
             // 
-            // maxCpuSize
+            // nudMaxAddrSpace
             // 
-            this.maxCpuSize.Location = new System.Drawing.Point(6, 110);
-            this.maxCpuSize.Name = "maxCpuSize";
-            this.maxCpuSize.Size = new System.Drawing.Size(138, 27);
-            this.maxCpuSize.TabIndex = 21;
+            this.nudMaxAddrSpace.Location = new System.Drawing.Point(6, 110);
+            this.nudMaxAddrSpace.Name = "nudMaxAddrSpace";
+            this.nudMaxAddrSpace.Size = new System.Drawing.Size(138, 27);
+            this.nudMaxAddrSpace.TabIndex = 21;
             // 
             // label6
             // 
@@ -521,20 +524,20 @@
             this.label6.TabIndex = 20;
             this.label6.Text = "Максимальний розмір адресного простору процесу";
             // 
-            // textBox1
+            // tbDevice2
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 28);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(431, 27);
-            this.textBox1.TabIndex = 3;
+            this.tbDevice2.Location = new System.Drawing.Point(6, 28);
+            this.tbDevice2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbDevice2.Name = "tbDevice2";
+            this.tbDevice2.ReadOnly = true;
+            this.tbDevice2.Size = new System.Drawing.Size(431, 27);
+            this.tbDevice2.TabIndex = 3;
             // 
             // groupBox13
             // 
             this.groupBox13.Controls.Add(this.label15);
-            this.groupBox13.Controls.Add(this.textBox1);
-            this.groupBox13.Location = new System.Drawing.Point(478, 278);
+            this.groupBox13.Controls.Add(this.tbDevice2);
+            this.groupBox13.Location = new System.Drawing.Point(478, 361);
             this.groupBox13.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -553,8 +556,8 @@
             // groupBox14
             // 
             this.groupBox14.Controls.Add(this.label16);
-            this.groupBox14.Controls.Add(this.textBox2);
-            this.groupBox14.Location = new System.Drawing.Point(478, 403);
+            this.groupBox14.Controls.Add(this.tbDevice3);
+            this.groupBox14.Location = new System.Drawing.Point(478, 435);
             this.groupBox14.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox14.Name = "groupBox14";
             this.groupBox14.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -570,23 +573,92 @@
             this.label16.TabIndex = 27;
             this.label16.Text = "Зовнішній пристрій 3";
             // 
-            // textBox2
+            // tbDevice3
             // 
-            this.textBox2.Location = new System.Drawing.Point(6, 28);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(431, 27);
-            this.textBox2.TabIndex = 3;
+            this.tbDevice3.Location = new System.Drawing.Point(6, 28);
+            this.tbDevice3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbDevice3.Name = "tbDevice3";
+            this.tbDevice3.ReadOnly = true;
+            this.tbDevice3.Size = new System.Drawing.Size(431, 27);
+            this.tbDevice3.TabIndex = 3;
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Controls.Add(this.lblDeviceQueue2);
+            this.groupBox15.Controls.Add(this.label17);
+            this.groupBox15.Location = new System.Drawing.Point(10, 361);
+            this.groupBox15.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox15.Size = new System.Drawing.Size(462, 66);
+            this.groupBox15.TabIndex = 45;
+            this.groupBox15.TabStop = false;
+            // 
+            // lblDeviceQueue2
+            // 
+            this.lblDeviceQueue2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblDeviceQueue2.FormattingEnabled = true;
+            this.lblDeviceQueue2.ItemHeight = 20;
+            this.lblDeviceQueue2.Location = new System.Drawing.Point(6, 27);
+            this.lblDeviceQueue2.Name = "lblDeviceQueue2";
+            this.lblDeviceQueue2.Size = new System.Drawing.Size(450, 24);
+            this.lblDeviceQueue2.TabIndex = 29;
+            // 
+            // label17
+            // 
+            this.label17.Location = new System.Drawing.Point(9, 3);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(253, 21);
+            this.label17.TabIndex = 29;
+            this.label17.Text = "Черга до зовнішнього пристрою 1";
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Controls.Add(this.lblDeviceQueue3);
+            this.groupBox16.Controls.Add(this.label18);
+            this.groupBox16.Location = new System.Drawing.Point(10, 435);
+            this.groupBox16.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox16.Size = new System.Drawing.Size(462, 66);
+            this.groupBox16.TabIndex = 45;
+            this.groupBox16.TabStop = false;
+            // 
+            // lblDeviceQueue3
+            // 
+            this.lblDeviceQueue3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblDeviceQueue3.FormattingEnabled = true;
+            this.lblDeviceQueue3.ItemHeight = 20;
+            this.lblDeviceQueue3.Location = new System.Drawing.Point(6, 27);
+            this.lblDeviceQueue3.Name = "lblDeviceQueue3";
+            this.lblDeviceQueue3.Size = new System.Drawing.Size(450, 24);
+            this.lblDeviceQueue3.TabIndex = 29;
+            // 
+            // label18
+            // 
+            this.label18.Location = new System.Drawing.Point(9, 3);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(253, 21);
+            this.label18.TabIndex = 29;
+            this.label18.Text = "Черга до зовнішнього пристрою 1";
+            // 
+            // cbRamSize
+            // 
+            this.cbRamSize.FormattingEnabled = true;
+            this.cbRamSize.Location = new System.Drawing.Point(6, 109);
+            this.cbRamSize.Name = "cbRamSize";
+            this.cbRamSize.Size = new System.Drawing.Size(138, 28);
+            this.cbRamSize.TabIndex = 21;
             // 
             // FrmDetailed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(950, 709);
+            this.ClientSize = new System.Drawing.Size(950, 715);
             this.Controls.Add(this.groupBox14);
             this.Controls.Add(this.groupBox13);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.groupBox16);
+            this.Controls.Add(this.groupBox15);
             this.Controls.Add(this.groupBox12);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.groupBox10);
@@ -603,7 +675,7 @@
             this.Name = "FrmDetailed";
             this.Text = "Система CSSM";
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.procIntensity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudProcIntensity)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
@@ -614,31 +686,32 @@
             this.groupBox11.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.minBurstTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMinBurstTime)).EndInit();
             this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.maxBurstTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMaxBurstTime)).EndInit();
             this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ramSize)).EndInit();
             this.groupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.minCpuSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMinAddrSpace)).EndInit();
             this.groupBox6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.maxCpuSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMaxAddrSpace)).EndInit();
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
             this.groupBox14.ResumeLayout(false);
             this.groupBox14.PerformLayout();
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox16.ResumeLayout(false);
             this.ResumeLayout(false);
 
 		}
 
 		#endregion
 		private System.Windows.Forms.TextBox tbCPU;
-		private System.Windows.Forms.TextBox tbDevice;
-		private System.Windows.Forms.Button save;
-		private System.Windows.Forms.Button workingCycle;
-		private System.Windows.Forms.Button end;
-		private System.Windows.Forms.RadioButton manualMode;
-		private System.Windows.Forms.RadioButton autoMode;
+		private System.Windows.Forms.TextBox tbDevice1;
+		private System.Windows.Forms.Button bSaveSettings;
+		private System.Windows.Forms.Button bWorkingCycle;
+		private System.Windows.Forms.Button bClear;
+		private System.Windows.Forms.RadioButton rbManualMode;
+		private System.Windows.Forms.RadioButton rbAutoMode;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Label label8;
@@ -666,23 +739,29 @@
 		private GroupBox groupBox6;
 		private Label label6;
 
-		private NumericUpDown procIntensity;
-		private NumericUpDown minBurstTime;
-		private NumericUpDown maxBurstTime;
-		private NumericUpDown ramSize;
-		private NumericUpDown minCpuSize;
-		private NumericUpDown maxCpuSize;
-        private ListBox queueToCPU;
-        private ListBox queueToDevice;
+		private NumericUpDown nudProcIntensity;
+		private NumericUpDown nudMinBurstTime;
+		private NumericUpDown nudMaxBurstTime;
+		private NumericUpDown nudMinAddrSpace;
+		private NumericUpDown nudMaxAddrSpace;
+        private ListBox lblCPUQueue;
+        private ListBox lblDeviceQueue1;
         private Label labelTime;
-        private Label labelOccupiedRAM;
-        private Label labelFreeRAM;
-        private TextBox textBox1;
+        private Label lblOccupiedRam;
+        private Label lblFreeRam;
+        private TextBox tbDevice2;
         private GroupBox groupBox13;
         private Label label15;
         private GroupBox groupBox14;
         private Label label16;
-        private TextBox textBox2;
+        private TextBox tbDevice3;
+        private GroupBox groupBox15;
+        private ListBox lblDeviceQueue2;
+        private Label label17;
+        private GroupBox groupBox16;
+        private ListBox lblDeviceQueue3;
+        private Label label18;
+        private ComboBox cbRamSize;
     }
 }
 

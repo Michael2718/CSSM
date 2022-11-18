@@ -11,33 +11,33 @@
             get { return tbCPU; }
         }
         public TextBox TbDevice {
-            get { return tbDevice; }
+            get { return tbDevice1; }
         }
         public Label LabelFreeRAM {
-            get { return labelFreeRAM; }
+            get { return lblFreeRam; }
         }
         public Label LabelOccupiedRAM {
-            get { return labelOccupiedRAM; }
+            get { return lblOccupiedRam; }
         }
 
 
         public NumericUpDown ProcIntensity {
-            get { return procIntensity; }
+            get { return nudProcIntensity; }
         }
         public NumericUpDown MinBurstTime {
-            get { return minBurstTime; }
+            get { return nudMinBurstTime; }
         }
         public NumericUpDown MaxBurstTime {
-            get { return maxBurstTime; }
+            get { return nudMaxBurstTime; }
         }
         public NumericUpDown RamSize {
-            get { return ramSize; }
+            get { return cbRamSize; }
         }
         public NumericUpDown MinCpuSize {
-            get { return minCpuSize; }
+            get { return nudMinAddrSpace; }
         }
         public NumericUpDown MaxCpuSize {
-            get { return maxCpuSize; }
+            get { return nudMaxAddrSpace; }
         }
 
         private void workingCycle_Click(object sender, EventArgs e) {
