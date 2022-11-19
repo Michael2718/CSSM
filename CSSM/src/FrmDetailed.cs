@@ -27,8 +27,8 @@ namespace CSSM {
 		public NumericUpDown NudMaxAddrSpace => nudMaxAddrSpace;
 
 		public Label LblTime => lblTime;
-		public Label LabelFreeRAM => lblFreeRam;
-		public Label LabelOccupiedRAM => lblOccupiedRam;
+		public Label LblFreeRam => lblFreeRam;
+		public Label LblOccupiedRam => lblOccupiedRam;
 
 		private void bSaveSettings_Click(object sender, EventArgs e) {
 			sessionPreparation();

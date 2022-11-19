@@ -9,36 +9,39 @@ namespace CSSM {
 
 		public override void DataBind() {
 			frm.LblTime.DataBindings.Add(new Binding("Text", model.clock, "Clock"));
-			frm.TbCPU.DataBindings.Add(new Binding("Text", model.Cpu, "ActiveProcess"));
-			frm.TbDevice.DataBindings.Add(new Binding("Text", model.Device, "ActiveProcess"));
 
-			frm.LabelOccupiedRAM.DataBindings.Add(new Binding("Text", model.ram, "OccupiedSize"));
-			frm.LabelFreeRAM.DataBindings.Add(new Binding("Text", model.ram, "FreeSize"));
+			frm.TbCPU.DataBindings.Add(new Binding("Text", model.Cpu, "ActiveProcess"));
+
+			frm.TbDevice1.DataBindings.Add(new Binding("Text", model.Device1, "ActiveProcess"));
+			frm.TbDevice2.DataBindings.Add(new Binding("Text", model.Device2, "ActiveProcess"));
+			frm.TbDevice3.DataBindings.Add(new Binding("Text", model.Device3, "ActiveProcess"));
+
+            frm.LblFreeRam.DataBindings.Add(new Binding("Text", model.Ram, "FreeSize"));
+            frm.LblOccupiedRam.DataBindings.Add(new Binding("Text", model.Ram, "OccupiedSize"));
 
 			Binding intestityBinding = new Binding("Value", model.ModelSettings, "Intensity");
 			intestityBinding.ControlUpdateMode = ControlUpdateMode.Never;
-			frm.ProcIntensity.DataBindings.Add(intestityBinding);
+			frm.NudProcIntensity.DataBindings.Add(intestityBinding);
 
 			Binding minBurstTimeBinding = new Binding("Value", model.ModelSettings, "MinBurstTime");
 			minBurstTimeBinding.ControlUpdateMode = ControlUpdateMode.Never;
-			frm.MinBurstTime.DataBindings.Add(minBurstTimeBinding);
+			frm.NudMinBurstTime.DataBindings.Add(minBurstTimeBinding);
 
 			Binding maxBurstTimeBinding = new Binding("Value", model.ModelSettings, "MaxBurstTime");
 			maxBurstTimeBinding.ControlUpdateMode = ControlUpdateMode.Never;
-			frm.MaxBurstTime.DataBindings.Add(maxBurstTimeBinding);
+			frm.NudMaxBurstTime.DataBindings.Add(maxBurstTimeBinding);
 
 			Binding ramSizeBinding = new Binding("SelectedItem", model.ModelSettings, "ValueOfRAMSize");
-			//ramSizeBinding.Parse += new ConvertEventHandler(objectToInt);
 			ramSizeBinding.ControlUpdateMode = ControlUpdateMode.Never;
-			frm.RamSize.DataBindings.Add(ramSizeBinding);
+			frm.CbRamSize.DataBindings.Add(ramSizeBinding);
 
-			Binding minCpuSizeBinding = new Binding("Value", model.ModelSettings, "MinCpuSize");
-			minCpuSizeBinding.ControlUpdateMode = ControlUpdateMode.Never;
-			frm.MinCpuSize.DataBindings.Add(minCpuSizeBinding);
+			Binding minAddrSpaceBinding = new Binding("Value", model.ModelSettings, "MinCpuSize");
+			minAddrSpaceBinding.ControlUpdateMode = ControlUpdateMode.Never;
+			frm.NudMinAddrSpace.DataBindings.Add(minAddrSpaceBinding);
 
-			Binding maxCpuSizeBinding = new Binding("Value", model.ModelSettings, "MaxCpuSize");
-			maxCpuSizeBinding.ControlUpdateMode = ControlUpdateMode.Never;
-			frm.MaxCpuSize.DataBindings.Add(maxCpuSizeBinding);
+			Binding maxAddrSpaceBinding = new Binding("Value", model.ModelSettings, "MaxCpuSize");
+			maxAddrSpaceBinding.ControlUpdateMode = ControlUpdateMode.Never;
+			frm.NudMaxAddrSpace.DataBindings.Add(maxAddrSpaceBinding);
 
 			Subscribe();
 		}
@@ -47,8 +50,8 @@ namespace CSSM {
 			frm.NudProcIntensity.DataBindings.RemoveAt(0);
 			frm.NudMinBurstTime.DataBindings.RemoveAt(0);
 			frm.NudMaxBurstTime.DataBindings.RemoveAt(0);
-            frm.CbRamSize.DataBindings.RemoveAt(0);
-            frm.NudMinAddrSpace.DataBindings.RemoveAt(0);
+			frm.CbRamSize.DataBindings.RemoveAt(0);
+			frm.NudMinAddrSpace.DataBindings.RemoveAt(0);
 			frm.NudMaxAddrSpace.DataBindings.RemoveAt(0);
 
 			Unsubscribe();
