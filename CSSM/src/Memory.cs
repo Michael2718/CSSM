@@ -4,10 +4,7 @@ using System.Runtime.CompilerServices;
 namespace CSSM {
     public class Memory : INotifyPropertyChanged {
         private long occupiedSize;
-        public long Size {
-            get;
-            private set;
-        }
+        public long Size { get; private set; }
         public long FreeSize {
             get => Size - occupiedSize;
             private set { }

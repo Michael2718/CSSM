@@ -12,7 +12,7 @@ namespace CSSM {
             }
         }
         public void WorkingCycle() {
-            if(!IsFree()) {
+            if (!IsFree()) {
                 activeProcess.IncreaseWorkTime();
             }
         }
@@ -26,7 +26,7 @@ namespace CSSM {
         }
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName] string propertyName = null) {
-            if(PropertyChanged != null) {
+            if (PropertyChanged != null) {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }

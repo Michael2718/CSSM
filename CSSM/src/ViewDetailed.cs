@@ -2,13 +2,13 @@
 using System.ComponentModel;
 
 namespace CSSM {
-	class ViewDetailed : View {
-		public ViewDetailed(Model model, Controller controller, FrmDetailed frm) : base(model, controller) {
-			this.frm = frm;
-		}
+    class ViewDetailed : View {
+        public ViewDetailed(Model model, Controller controller, FrmDetailed frm) : base(model, controller) {
+            this.frm = frm;
+        }
 
-		public override void DataBind() {
-			frm.LabelTime.DataBindings.Add(new Binding("Text", model.clock, "Clock"));
+        public override void DataBind() {
+            frm.LabelTime.DataBindings.Add(new Binding("Text", model.clock, "Clock"));
             frm.TbCPU.DataBindings.Add(new Binding("Text", model.Cpu, "ActiveProcess"));
             frm.TbDevice.DataBindings.Add(new Binding("Text", model.Device, "ActiveProcess"));
 
@@ -55,21 +55,21 @@ namespace CSSM {
         private void Subscribe() {
             model.PropertyChanged += PropertyChangedHandler;
         }
-		private void Unsubscribe() {
+        private void Unsubscribe() {
             model.PropertyChanged -= PropertyChangedHandler;
         }
-		private void PropertyChangedHandler(object? sender, PropertyChangedEventArgs e) {
-/*            if(e.PropertyName == "ReadyQueue") {
-                SortedUnsorterQueue<Process> temp = (SortedUnsorterQueue<Process>)model.ReadyQueue;
-                updateListBox(temp.Sorted, frm.LblSortedCPUQueue);
-                updateListBox(temp.Unsorted, frm.LblUnsortedCPUQueue);
-            } else {
-                updateListBox(model.DeviceQueue, frm.LblDeviceQueue);
-                updateListBox(model.DeviceQueue_2, frm.LblDeviceQueue_2);
-            }*/
+        private void PropertyChangedHandler(object? sender, PropertyChangedEventArgs e) {
+            /*            if(e.PropertyName == "ReadyQueue") {
+                            SortedUnsorterQueue<Process> temp = (SortedUnsorterQueue<Process>)model.ReadyQueue;
+                            updateListBox(temp.Sorted, frm.LblSortedCPUQueue);
+                            updateListBox(temp.Unsorted, frm.LblUnsortedCPUQueue);
+                        } else {
+                            updateListBox(model.DeviceQueue, frm.LblDeviceQueue);
+                            updateListBox(model.DeviceQueue_2, frm.LblDeviceQueue_2);
+                        }*/
         }
 
-        private void UpdateListBox( IQueueable<Process> queue, ListBox lb) { }
+        private void UpdateListBox(IQueueable<Process> queue, ListBox lb) { }
         private FrmDetailed frm;
     }
 
