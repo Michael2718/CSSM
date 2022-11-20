@@ -33,7 +33,7 @@ namespace CSSM {
 		private void bSaveSettings_Click(object sender, EventArgs e) {
 			sessionPreparation();
 			viewDetailed.ReactToUserActions(ModelOperations.SaveSettings);
-			if(rbAutoMode.Checked) {
+			if (rbAutoMode.Checked) {
 				timerAutoMode = new Timer();
 				timerAutoMode.Enabled = true;
 				timerAutoMode.Interval = 1000;
@@ -43,15 +43,15 @@ namespace CSSM {
 		private void bWorkingCycle_Click(object sender, EventArgs e) {
 			viewDetailed.ReactToUserActions(ModelOperations.WorkingCycle);
 		}
-        private void bClear_Click(object sender, EventArgs e) {
-			if(rbAutoMode.Checked) {
+		private void bClear_Click(object sender, EventArgs e) {
+			if (rbAutoMode.Checked) {
 				timerAutoMode.Enabled = false;
 			}
-            viewDetailed.ReactToUserActions(ModelOperations.Clear);
-            endOfSession();
-            UpdateSettings();
-        }
-        private void sessionPreparation() {
+			viewDetailed.ReactToUserActions(ModelOperations.Clear);
+			endOfSession();
+			UpdateSettings();
+		}
+		private void sessionPreparation() {
 			bSaveSettings.Enabled = false;
 			bClear.Enabled = true;
 			bWorkingCycle.Enabled = rbManualMode.Checked;
@@ -65,25 +65,25 @@ namespace CSSM {
 			rbManualMode.Enabled = rbManualMode.Checked;
 
 		}
-        private void UpdateSettings() {
-            nudProcIntensity.Value = (decimal)0.5;
-            nudMinBurstTime.Value = 1;
+		private void UpdateSettings() {
+			nudProcIntensity.Value = (decimal)0.5;
+			nudMinBurstTime.Value = 1;
 			nudMaxBurstTime.Value = 4;
-            nudMinAddrSpace.Value = 25;
+			nudMinAddrSpace.Value = 25;
 			nudMaxAddrSpace.Value = 125;
-        }
-        private void endOfSession() {
-            bClear.Enabled = false;
-            bSaveSettings.Enabled = true;
-            bWorkingCycle.Enabled = false;
-            nudProcIntensity.Enabled = true;
-            nudMinBurstTime.Enabled = true;
-            nudMaxBurstTime.Enabled = true;
-            cbRamSize.Enabled = true;
-            nudMinAddrSpace.Enabled = true;
-            nudMaxAddrSpace.Enabled = true;
-            rbManualMode.Enabled = true;
-            rbAutoMode.Enabled = true;
-        }
-    }
+		}
+		private void endOfSession() {
+			bClear.Enabled = false;
+			bSaveSettings.Enabled = true;
+			bWorkingCycle.Enabled = false;
+			nudProcIntensity.Enabled = true;
+			nudMinBurstTime.Enabled = true;
+			nudMaxBurstTime.Enabled = true;
+			cbRamSize.Enabled = true;
+			nudMinAddrSpace.Enabled = true;
+			nudMaxAddrSpace.Enabled = true;
+			rbManualMode.Enabled = true;
+			rbAutoMode.Enabled = true;
+		}
+	}
 }

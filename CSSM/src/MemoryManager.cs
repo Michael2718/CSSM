@@ -6,7 +6,7 @@
         }
 
         public Memory Allocate(long size) {
-            if(size <= memory.FreeSize) {
+            if (size <= memory.FreeSize) {
                 memory.OccupiedSize += size;
                 return memory;
             }

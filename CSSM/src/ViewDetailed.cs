@@ -16,8 +16,8 @@ namespace CSSM {
 			frm.TbDevice2.DataBindings.Add(new Binding("Text", model.Device2, "ActiveProcess"));
 			frm.TbDevice3.DataBindings.Add(new Binding("Text", model.Device3, "ActiveProcess"));
 
-            frm.LblFreeRam.DataBindings.Add(new Binding("Text", model.Ram, "FreeSize"));
-            frm.LblOccupiedRam.DataBindings.Add(new Binding("Text", model.Ram, "OccupiedSize"));
+			frm.LblFreeRam.DataBindings.Add(new Binding("Text", model.Ram, "FreeSize"));
+			frm.LblOccupiedRam.DataBindings.Add(new Binding("Text", model.Ram, "OccupiedSize"));
 
 			Binding intestityBinding = new Binding("Value", model.ModelSettings, "Intensity");
 			intestityBinding.ControlUpdateMode = ControlUpdateMode.Never;
