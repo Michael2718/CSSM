@@ -1,36 +1,37 @@
 ﻿namespace CSSM {
     class Settings {
         private double intensity;
-        private int minValueOfBurstTime;
-        private int maxValueOfBurstTime;
-        private int minValueOfAddrSpace;
-        private int maxValueOfAddrSpace;
-        private int valueOfRAMSize;
+        private int minBurstTime;
+        private int maxBurstTime;
+        private int ramSize;
+        private int minAddrSpace;
+        private int maxAddrSpace;
         public double Intensity {
             get => intensity;
             set => intensity = value;
         }
-        public int MinValueOfBurstTime {
-            get => minValueOfBurstTime;
-            set => minValueOfBurstTime = value;
+        public int MinBurstTime {
+            get => minBurstTime;
+            set => minBurstTime = value;
         }
-        public int MaxValueOfBurstTime {
-            get => maxValueOfBurstTime;
-            set => maxValueOfBurstTime = value;
+        public int MaxBurstTime {
+            get => maxBurstTime;
+            set => maxBurstTime = value;
         }
-        public int MinValueOfAddrSpace {
-            get => minValueOfAddrSpace;
-            set => minValueOfAddrSpace = value;
+        public int RamSize {
+            get => ramSize;
+            set => ramSize = value;
+        }
+        public int MinAddrSpace {
+            get => minAddrSpace;
+            set => minAddrSpace = value;
 
         }
-        public int MaxValueOfAddrSpace {
-            get => maxValueOfAddrSpace;
-            set => maxValueOfAddrSpace = value;
+        public int MaxAddrSpace {
+            get => maxAddrSpace;
+            set => maxAddrSpace = value;
 
         }
-        public int ValueOfRAMSize {
-            get => valueOfRAMSize;
-            set => valueOfRAMSize = value;
-        }
+
     }
 }

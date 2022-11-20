@@ -38,20 +38,21 @@ namespace CSSM {
 		}
 
 		public void SaveSettings() {
-			Ram.Save(ModelSettings.ValueOfRAMSize);
+			Ram.Save(ModelSettings.RamSize);
 			memoryManager.Save(Ram);
 		}
 		public void WorkingCycle() {
 			Clock.WorkingCycle();
 			if (processRand.NextDouble() <= ModelSettings.Intensity) {
-				Process proc = new(idGen.Id, processRand.Next(modelSettings.MinValueOfAddrSpace, modelSettings.MaxValueOfAddrSpace + 1));
-				if (memoryManager.Allocate(proc.AddrSpace) != null) {
-					proc.BurstTime = processRand.Next(modelSettings.MinValueOfBurstTime, modelSettings.MaxValueOfBurstTime + 1);
-					Subscribe(proc);
-					readyQueue = readyQueue.Put(proc);
-					if (cpu.IsFree()) {
-						cpuScheduler.Session();
-					}
+				Process process = new(idGen.Id, processRand.Next(ModelSettings.MinAddrSpace, ModelSettings.MaxAddrSpace + 1));
+				if (memoryManager.Allocate(process.AddrSpace) != null) {
+                    process.ArrivalTime = Clock.Clock;
+                    process.BurstTime = processRand.Next(ModelSettings.MinBurstTime, ModelSettings.MaxBurstTime + 1);
+					readyQueue = readyQueue.Put(process);
+                    process.ReadyQueueArrivalTime = Clock.Clock;
+                    if (Cpu.IsFree()) {
+						putProcessOnResource(Cpu);
+                    }
 				}
 			}
 			Cpu.WorkingCycle();
@@ -108,76 +109,76 @@ namespace CSSM {
 				Subscribe(resource);
 			}
 		}
-        private void FreeingResourceEventHandler(object sender, EventArgs e) {
-            Process? process = sender as Process;
-            NewEventArgs? device = e as NewEventArgs;
+		private void FreeingResourceEventHandler(object sender, EventArgs e) {
+			Process? process = sender as Process;
+			NewEventArgs? device = e as NewEventArgs;
 
 			if (process is not null && process.Status == ProcessStatus.terminated) {
-                Unsubscribe(Cpu);
-                Cpu.Clear();
-                memoryManager.Free(process.AddrSpace);
-                if (readyQueue.Count != 0) {
-                    putProcessOnResource(Cpu);
-                }
-            } else if (process is not null && process.Status == ProcessStatus.waiting && device is not null) {
-                Unsubscribe(Cpu);
-                Cpu.Clear();
-                if (readyQueue.Count != 0) {
-                    putProcessOnResource(Cpu);
-                }
+				Unsubscribe(Cpu);
+				Cpu.Clear();
+				memoryManager.Free(process.AddrSpace);
+				if (readyQueue.Count != 0) {
+					putProcessOnResource(Cpu);
+				}
+			} else if (process is not null && process.Status == ProcessStatus.waiting && device is not null) {
+				Unsubscribe(Cpu);
+				Cpu.Clear();
+				if (readyQueue.Count != 0) {
+					putProcessOnResource(Cpu);
+				}
 
-                process.ResetWorkTime();
-                process.BurstTime = processRand.Next(ModelSettings.MinValueOfBurstTime, ModelSettings.MaxValueOfBurstTime + 1);
+				process.ResetWorkTime();
+				process.BurstTime = processRand.Next(ModelSettings.MinBurstTime, ModelSettings.MaxBurstTime + 1);
 
 				if (device.DeviceNumber == 1) {
-                    DeviceQueue1 = DeviceQueue1.Put(process);
-                    if (Device1.IsFree()) {
-                        putProcessOnResource(Device1);
-                    }
-                } else if (device.DeviceNumber == 2) {
-                    DeviceQueue2 = DeviceQueue2.Put(process);
-                    if (Device2.IsFree()) {
-                        putProcessOnResource(Device2);
-                    }
-                } else if (device.DeviceNumber == 3) {
-                    DeviceQueue3 = DeviceQueue3.Put(process);
-                    if (Device3.IsFree()) {
-                        putProcessOnResource(Device3);
-                    }
-                }
-            } else if (process is not null && process.Status == ProcessStatus.ready && device is not null) {
-                if (device.DeviceNumber == 1) {
-                    Unsubscribe(Device1);
-                    Device1.Clear();
-                    if (deviceQueue1.Count != 0) {
-                        putProcessOnResource(Device1);
-                    }
-                } else if (device.DeviceNumber == 2) {
-                    Unsubscribe(Device2);
-                    Device2.Clear();
-                    if (deviceQueue2.Count != 0) {
-                        putProcessOnResource(Device2);
-                    }
-                } else if (device.DeviceNumber == 3) {
-                    Unsubscribe(Device3);
-                    Device3.Clear();
-                    if (deviceQueue3.Count != 0) {
-                        putProcessOnResource(Device3);
-                    }
-                }
-                process.ResetWorkTime();
-                process.BurstTime = processRand.Next(ModelSettings.MinValueOfBurstTime, ModelSettings.MaxValueOfBurstTime + 1);
-                ReadyQueue = readyQueue.Put(process);
-                process.ReadyQueueArrivalTime = Clock.Clock;
-                if (Cpu.IsFree()) {
-                    putProcessOnResource(Cpu);
-                }
-            } else {
-                throw new Exception("Unknown process status");
-            }
-        }
+					DeviceQueue1 = DeviceQueue1.Put(process);
+					if (Device1.IsFree()) {
+						putProcessOnResource(Device1);
+					}
+				} else if (device.DeviceNumber == 2) {
+					DeviceQueue2 = DeviceQueue2.Put(process);
+					if (Device2.IsFree()) {
+						putProcessOnResource(Device2);
+					}
+				} else if (device.DeviceNumber == 3) {
+					DeviceQueue3 = DeviceQueue3.Put(process);
+					if (Device3.IsFree()) {
+						putProcessOnResource(Device3);
+					}
+				}
+			} else if (process is not null && process.Status == ProcessStatus.ready && device is not null) {
+				if (device.DeviceNumber == 1) {
+					Unsubscribe(Device1);
+					Device1.Clear();
+					if (deviceQueue1.Count != 0) {
+						putProcessOnResource(Device1);
+					}
+				} else if (device.DeviceNumber == 2) {
+					Unsubscribe(Device2);
+					Device2.Clear();
+					if (deviceQueue2.Count != 0) {
+						putProcessOnResource(Device2);
+					}
+				} else if (device.DeviceNumber == 3) {
+					Unsubscribe(Device3);
+					Device3.Clear();
+					if (deviceQueue3.Count != 0) {
+						putProcessOnResource(Device3);
+					}
+				}
+				process.ResetWorkTime();
+				process.BurstTime = processRand.Next(ModelSettings.MinBurstTime, ModelSettings.MaxBurstTime + 1);
+				ReadyQueue = readyQueue.Put(process);
+				process.ReadyQueueArrivalTime = Clock.Clock;
+				if (Cpu.IsFree()) {
+					putProcessOnResource(Cpu);
+				}
+			} else {
+				throw new Exception("Unknown process status");
+			}
+		}
 
-        public readonly SystemClock Clock;
+		public readonly SystemClock Clock;
 
 		public readonly Resource Cpu;
 

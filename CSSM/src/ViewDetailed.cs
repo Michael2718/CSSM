@@ -34,17 +34,17 @@ namespace CSSM {
 			};
 			frm.NudMaxBurstTime.DataBindings.Add(maxBurstTimeBinding);
 
-			Binding ramSizeBinding = new("SelectedItem", model.ModelSettings, "ValueOfRAMSize") {
+			Binding ramSizeBinding = new("SelectedItem", model.ModelSettings, "RamSize") {
 				ControlUpdateMode = ControlUpdateMode.Never
 			};
 			frm.CbRamSize.DataBindings.Add(ramSizeBinding);
 
-			Binding minAddrSpaceBinding = new("Value", model.ModelSettings, "MinCpuSize") {
+			Binding minAddrSpaceBinding = new("Value", model.ModelSettings, "MinAddrSpace") {
 				ControlUpdateMode = ControlUpdateMode.Never
 			};
 			frm.NudMinAddrSpace.DataBindings.Add(minAddrSpaceBinding);
 
-			Binding maxAddrSpaceBinding = new("Value", model.ModelSettings, "MaxCpuSize") {
+			Binding maxAddrSpaceBinding = new("Value", model.ModelSettings, "MaxAddrSpace") {
 				ControlUpdateMode = ControlUpdateMode.Never
 			};
 			frm.NudMaxAddrSpace.DataBindings.Add(maxAddrSpaceBinding);
