@@ -55,9 +55,9 @@
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.lblCPUQueue = new System.Windows.Forms.ListBox();
+            this.lbCPUQueue = new System.Windows.Forms.ListBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.lblDeviceQueue1 = new System.Windows.Forms.ListBox();
+            this.lbDeviceQueue1 = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.nudMinBurstTime = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
@@ -80,10 +80,10 @@
             this.label16 = new System.Windows.Forms.Label();
             this.tbDevice3 = new System.Windows.Forms.TextBox();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.lblDeviceQueue2 = new System.Windows.Forms.ListBox();
+            this.lbDeviceQueue2 = new System.Windows.Forms.ListBox();
             this.label17 = new System.Windows.Forms.Label();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
-            this.lblDeviceQueue3 = new System.Windows.Forms.ListBox();
+            this.lbDeviceQueue3 = new System.Windows.Forms.ListBox();
             this.label18 = new System.Windows.Forms.Label();
             this.timerAutoMode = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
@@ -271,10 +271,16 @@
             // 
             // nudProcIntensity
             // 
+            this.nudProcIntensity.DecimalPlaces = 1;
             this.nudProcIntensity.Location = new System.Drawing.Point(6, 110);
             this.nudProcIntensity.Name = "nudProcIntensity";
             this.nudProcIntensity.Size = new System.Drawing.Size(138, 27);
             this.nudProcIntensity.TabIndex = 21;
+            this.nudProcIntensity.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
             // 
             // groupBox7
             // 
@@ -359,7 +365,7 @@
             // 
             // groupBox11
             // 
-            this.groupBox11.Controls.Add(this.lblCPUQueue);
+            this.groupBox11.Controls.Add(this.lbCPUQueue);
             this.groupBox11.Controls.Add(this.label9);
             this.groupBox11.Location = new System.Drawing.Point(10, 155);
             this.groupBox11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -369,18 +375,18 @@
             this.groupBox11.TabIndex = 44;
             this.groupBox11.TabStop = false;
             // 
-            // lblCPUQueue
+            // lbCPUQueue
             // 
-            this.lblCPUQueue.FormattingEnabled = true;
-            this.lblCPUQueue.ItemHeight = 20;
-            this.lblCPUQueue.Location = new System.Drawing.Point(6, 27);
-            this.lblCPUQueue.Name = "lblCPUQueue";
-            this.lblCPUQueue.Size = new System.Drawing.Size(450, 84);
-            this.lblCPUQueue.TabIndex = 29;
+            this.lbCPUQueue.FormattingEnabled = true;
+            this.lbCPUQueue.ItemHeight = 20;
+            this.lbCPUQueue.Location = new System.Drawing.Point(6, 27);
+            this.lbCPUQueue.Name = "lbCPUQueue";
+            this.lbCPUQueue.Size = new System.Drawing.Size(450, 84);
+            this.lbCPUQueue.TabIndex = 29;
             // 
             // groupBox12
             // 
-            this.groupBox12.Controls.Add(this.lblDeviceQueue1);
+            this.groupBox12.Controls.Add(this.lbDeviceQueue1);
             this.groupBox12.Controls.Add(this.label10);
             this.groupBox12.Location = new System.Drawing.Point(10, 287);
             this.groupBox12.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -390,15 +396,15 @@
             this.groupBox12.TabIndex = 45;
             this.groupBox12.TabStop = false;
             // 
-            // lblDeviceQueue1
+            // lbDeviceQueue1
             // 
-            this.lblDeviceQueue1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDeviceQueue1.FormattingEnabled = true;
-            this.lblDeviceQueue1.ItemHeight = 20;
-            this.lblDeviceQueue1.Location = new System.Drawing.Point(6, 27);
-            this.lblDeviceQueue1.Name = "lblDeviceQueue1";
-            this.lblDeviceQueue1.Size = new System.Drawing.Size(450, 24);
-            this.lblDeviceQueue1.TabIndex = 29;
+            this.lbDeviceQueue1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbDeviceQueue1.FormattingEnabled = true;
+            this.lbDeviceQueue1.ItemHeight = 20;
+            this.lbDeviceQueue1.Location = new System.Drawing.Point(6, 27);
+            this.lbDeviceQueue1.Name = "lbDeviceQueue1";
+            this.lbDeviceQueue1.Size = new System.Drawing.Size(450, 24);
+            this.lbDeviceQueue1.TabIndex = 29;
             // 
             // groupBox2
             // 
@@ -418,6 +424,11 @@
             this.nudMinBurstTime.Name = "nudMinBurstTime";
             this.nudMinBurstTime.Size = new System.Drawing.Size(138, 27);
             this.nudMinBurstTime.TabIndex = 21;
+            this.nudMinBurstTime.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label2
             // 
@@ -445,6 +456,11 @@
             this.nudMaxBurstTime.Name = "nudMaxBurstTime";
             this.nudMaxBurstTime.Size = new System.Drawing.Size(138, 27);
             this.nudMaxBurstTime.TabIndex = 21;
+            this.nudMaxBurstTime.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
             // 
             // label3
             // 
@@ -469,6 +485,12 @@
             // cbRamSize
             // 
             this.cbRamSize.FormattingEnabled = true;
+            this.cbRamSize.Items.AddRange(new object[] {
+            "4000",
+            "8000",
+            "16000",
+            "32000",
+            "64000"});
             this.cbRamSize.Location = new System.Drawing.Point(6, 109);
             this.cbRamSize.Name = "cbRamSize";
             this.cbRamSize.Size = new System.Drawing.Size(138, 28);
@@ -500,6 +522,11 @@
             this.nudMinAddrSpace.Name = "nudMinAddrSpace";
             this.nudMinAddrSpace.Size = new System.Drawing.Size(138, 27);
             this.nudMinAddrSpace.TabIndex = 21;
+            this.nudMinAddrSpace.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // label5
             // 
@@ -524,9 +551,19 @@
             // nudMaxAddrSpace
             // 
             this.nudMaxAddrSpace.Location = new System.Drawing.Point(6, 110);
+            this.nudMaxAddrSpace.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
             this.nudMaxAddrSpace.Name = "nudMaxAddrSpace";
             this.nudMaxAddrSpace.Size = new System.Drawing.Size(138, 27);
             this.nudMaxAddrSpace.TabIndex = 21;
+            this.nudMaxAddrSpace.Value = new decimal(new int[] {
+            260,
+            0,
+            0,
+            0});
             // 
             // label6
             // 
@@ -596,7 +633,7 @@
             // 
             // groupBox15
             // 
-            this.groupBox15.Controls.Add(this.lblDeviceQueue2);
+            this.groupBox15.Controls.Add(this.lbDeviceQueue2);
             this.groupBox15.Controls.Add(this.label17);
             this.groupBox15.Location = new System.Drawing.Point(10, 361);
             this.groupBox15.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -606,15 +643,15 @@
             this.groupBox15.TabIndex = 45;
             this.groupBox15.TabStop = false;
             // 
-            // lblDeviceQueue2
+            // lbDeviceQueue2
             // 
-            this.lblDeviceQueue2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDeviceQueue2.FormattingEnabled = true;
-            this.lblDeviceQueue2.ItemHeight = 20;
-            this.lblDeviceQueue2.Location = new System.Drawing.Point(6, 27);
-            this.lblDeviceQueue2.Name = "lblDeviceQueue2";
-            this.lblDeviceQueue2.Size = new System.Drawing.Size(450, 24);
-            this.lblDeviceQueue2.TabIndex = 29;
+            this.lbDeviceQueue2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbDeviceQueue2.FormattingEnabled = true;
+            this.lbDeviceQueue2.ItemHeight = 20;
+            this.lbDeviceQueue2.Location = new System.Drawing.Point(6, 27);
+            this.lbDeviceQueue2.Name = "lbDeviceQueue2";
+            this.lbDeviceQueue2.Size = new System.Drawing.Size(450, 24);
+            this.lbDeviceQueue2.TabIndex = 29;
             // 
             // label17
             // 
@@ -626,7 +663,7 @@
             // 
             // groupBox16
             // 
-            this.groupBox16.Controls.Add(this.lblDeviceQueue3);
+            this.groupBox16.Controls.Add(this.lbDeviceQueue3);
             this.groupBox16.Controls.Add(this.label18);
             this.groupBox16.Location = new System.Drawing.Point(10, 435);
             this.groupBox16.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -636,15 +673,15 @@
             this.groupBox16.TabIndex = 45;
             this.groupBox16.TabStop = false;
             // 
-            // lblDeviceQueue3
+            // lbDeviceQueue3
             // 
-            this.lblDeviceQueue3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDeviceQueue3.FormattingEnabled = true;
-            this.lblDeviceQueue3.ItemHeight = 20;
-            this.lblDeviceQueue3.Location = new System.Drawing.Point(6, 27);
-            this.lblDeviceQueue3.Name = "lblDeviceQueue3";
-            this.lblDeviceQueue3.Size = new System.Drawing.Size(450, 24);
-            this.lblDeviceQueue3.TabIndex = 29;
+            this.lbDeviceQueue3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbDeviceQueue3.FormattingEnabled = true;
+            this.lbDeviceQueue3.ItemHeight = 20;
+            this.lbDeviceQueue3.Location = new System.Drawing.Point(6, 27);
+            this.lbDeviceQueue3.Name = "lbDeviceQueue3";
+            this.lbDeviceQueue3.Size = new System.Drawing.Size(450, 24);
+            this.lbDeviceQueue3.TabIndex = 29;
             // 
             // label18
             // 
@@ -748,8 +785,8 @@
 		private NumericUpDown nudMaxBurstTime;
 		private NumericUpDown nudMinAddrSpace;
 		private NumericUpDown nudMaxAddrSpace;
-        private ListBox lblCPUQueue;
-        private ListBox lblDeviceQueue1;
+        private ListBox lbCPUQueue;
+        private ListBox lbDeviceQueue1;
         private Label lblTime;
         private Label lblOccupiedRam;
         private Label lblFreeRam;
@@ -760,10 +797,10 @@
         private Label label16;
         private TextBox tbDevice3;
         private GroupBox groupBox15;
-        private ListBox lblDeviceQueue2;
+        private ListBox lbDeviceQueue2;
         private Label label17;
         private GroupBox groupBox16;
-        private ListBox lblDeviceQueue3;
+        private ListBox lbDeviceQueue3;
         private Label label18;
         private ComboBox cbRamSize;
         private System.Windows.Forms.Timer timerAutoMode;

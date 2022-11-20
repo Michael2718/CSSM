@@ -68,13 +68,13 @@ namespace CSSM {
 		private void Unsubscribe() {
 			model.PropertyChanged -= PropertyChangedHandler;
 		}
-		private void PropertyChangedHandler(object? sender, PropertyChangedEventArgs e) {
+		private void PropertyChangedHandler(object sender, PropertyChangedEventArgs e) {
             if (e.PropertyName == "ReadyQueue")
-                updateListBox(model.ReadyQueue, frm.LblCPUQueue);
+                updateListBox(model.ReadyQueue, frm.LbCPUQueue);
             else {
-                updateListBox(model.DeviceQueue1, frm.LblDeviceQueue1);
-                updateListBox(model.DeviceQueue2, frm.LblDeviceQueue2);
-                updateListBox(model.DeviceQueue3, frm.LblDeviceQueue3);
+                updateListBox(model.DeviceQueue1, frm.LbDeviceQueue1);
+                updateListBox(model.DeviceQueue2, frm.LbDeviceQueue2);
+                updateListBox(model.DeviceQueue3, frm.LbDeviceQueue3);
             }
         }
 

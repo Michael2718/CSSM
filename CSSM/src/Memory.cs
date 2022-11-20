@@ -19,11 +19,11 @@ namespace CSSM {
         }
         public void Save(long size) {
             Size = size;
-            occupiedSize = 0;
+            OccupiedSize = 0;
         }
         public void Clear() {
-            occupiedSize = 0;
-            FreeSize = Size;
+            FreeSize = 0;
+            OccupiedSize = 0;
         }
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName] string propertyName = null) {

@@ -59,9 +59,10 @@
         public long AddrSpace { get; private set; }
         public long ArrivalTime { get; set; }
         public long CommonWaitingTime { get; set; }
+        public long LeftTime => BurstTime - workTime;
 
-        private Random random = new Random();
-        NewEventArgs newEventArgs = new NewEventArgs();
+        private readonly Random random = new();
+        readonly NewEventArgs newEventArgs = new();
         public event EventHandler FreeingAResource;
     }
 }

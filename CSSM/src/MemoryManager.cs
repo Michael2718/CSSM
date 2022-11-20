@@ -1,6 +1,5 @@
 ﻿namespace CSSM {
     public class MemoryManager {
-        private Memory memory;
         public void Save(Memory memory) {
             this.memory = memory;
         }
@@ -17,5 +16,6 @@
             memory.OccupiedSize -= size;
             return memory;
         }
+        private Memory memory;
     }
 }

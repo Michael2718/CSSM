@@ -17,5 +17,20 @@ namespace CSSM {
             resource.ActiveProcess = newActiveProcess;
             return queue;
         }
+        public bool Check() {
+            return resource.ActiveProcess != null && queue.Count != 0 && resource.ActiveProcess.BurstTime > queue.Item().BurstTime;
+        }
+        public bool MoreCheck() {
+            return resource.ActiveProcess != null && queue.Count != 0 && resource.ActiveProcess.LeftTime > queue.Item().LeftTime;
+        }
+        public IQueueable<Process> Switch() {
+            Process newActiveProcess = resource.ActiveProcess;
+            newActiveProcess.Status = ProcessStatus.ready;
+            resource.ActiveProcess = queue.Item();
+            resource.ActiveProcess.Status = ProcessStatus.running;
+            queue.Remove();
+            queue.Put(newActiveProcess);
+            return queue;
+        }
     }
 }

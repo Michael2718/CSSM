@@ -11,13 +11,13 @@ namespace CSSM {
 		}
 
 		public TextBox TbCPU => tbCPU;
-		public ListBox LblCPUQueue => lblCPUQueue;
+		public ListBox LbCPUQueue => lbCPUQueue;
 		public TextBox TbDevice1 => tbDevice1;
 		public TextBox TbDevice2 => tbDevice2;
 		public TextBox TbDevice3 => tbDevice3;
-		public ListBox LblDeviceQueue1 => lblDeviceQueue1;
-		public ListBox LblDeviceQueue2 => lblDeviceQueue2;
-		public ListBox LblDeviceQueue3 => lblDeviceQueue3;
+		public ListBox LbDeviceQueue1 => lbDeviceQueue1;
+		public ListBox LbDeviceQueue2 => lbDeviceQueue2;
+		public ListBox LbDeviceQueue3 => lbDeviceQueue3;
 
 		public NumericUpDown NudProcIntensity => nudProcIntensity;
 		public NumericUpDown NudMinBurstTime => nudMinBurstTime;
@@ -55,33 +55,36 @@ namespace CSSM {
 			bSaveSettings.Enabled = false;
 			bClear.Enabled = true;
 			bWorkingCycle.Enabled = rbManualMode.Checked;
+
 			nudProcIntensity.Enabled = false;
 			nudMinBurstTime.Enabled = false;
 			nudMaxBurstTime.Enabled = false;
 			cbRamSize.Enabled = false;
 			nudMinAddrSpace.Enabled = false;
 			nudMaxAddrSpace.Enabled = false;
+
 			rbAutoMode.Enabled = rbAutoMode.Checked;
 			rbManualMode.Enabled = rbManualMode.Checked;
-
 		}
 		private void UpdateSettings() {
 			nudProcIntensity.Value = (decimal)0.5;
 			nudMinBurstTime.Value = 1;
 			nudMaxBurstTime.Value = 4;
-			nudMinAddrSpace.Value = 25;
-			nudMaxAddrSpace.Value = 125;
+			nudMinAddrSpace.Value = 100;
+			nudMaxAddrSpace.Value = 260;
 		}
 		private void EndOfSession() {
 			bClear.Enabled = false;
 			bSaveSettings.Enabled = true;
 			bWorkingCycle.Enabled = false;
+
 			nudProcIntensity.Enabled = true;
 			nudMinBurstTime.Enabled = true;
 			nudMaxBurstTime.Enabled = true;
 			cbRamSize.Enabled = true;
 			nudMinAddrSpace.Enabled = true;
 			nudMaxAddrSpace.Enabled = true;
+
 			rbManualMode.Enabled = true;
 			rbAutoMode.Enabled = true;
 		}

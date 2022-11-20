@@ -18,7 +18,7 @@ namespace CSSM {
 
 			idGen = new IdGenerator();
 
-			readyQueue = new Queues.PriorityQueue<Process, BinarySearchTree<Process>>(new BinarySearchTree<Process>());
+			readyQueue = new Queues.PriorityQueue<Process, BinaryHeap<Process>>(new BinaryHeap<Process>());
 
 			deviceQueue1 = new FIFOQueue<Process, SimpleArray<Process>>(new SimpleArray<Process>());
 			deviceQueue2 = new FIFOQueue<Process, SimpleArray<Process>>(new SimpleArray<Process>());
@@ -55,11 +55,16 @@ namespace CSSM {
                     }
 				}
 			}
-			Cpu.WorkingCycle();
+            if (cpuScheduler.MoreCheck() && cpuScheduler.Check()) {
+                Unsubscribe(Cpu);
+                ReadyQueue = cpuScheduler.Switch();
+                Subscribe(Cpu);
+            }
+            Cpu.WorkingCycle();
 			Device1.WorkingCycle();
 			Device2.WorkingCycle();
 			Device3.WorkingCycle();
-		} // TODO: WorkingCycle()
+		}
 
 		public void Clear() {
 			Unsubscribe(Cpu);
@@ -101,7 +106,7 @@ namespace CSSM {
 					DeviceQueue1 = deviceScheduler1.Session();
 				} else if (resource == Device2) {
 					DeviceQueue2 = deviceScheduler2.Session();
-				} else {
+				} else if (resource == Device3){
 					DeviceQueue3 = deviceScheduler3.Session();
 				}
 			}
@@ -239,8 +244,7 @@ namespace CSSM {
 
 		public event PropertyChangedEventHandler PropertyChanged;
 		private void OnPropertyChanged([CallerMemberName] string propertyName = null) {
-			if (PropertyChanged != null)
-				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 	}
 }

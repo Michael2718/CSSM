@@ -15,7 +15,7 @@
 					break;
 				default:
 					throw new ArgumentException(
-						"Неизвестная операция: " + operation,
+						"Неизвестная операция: " + operation +
 						"operation");
 			}
 		}
