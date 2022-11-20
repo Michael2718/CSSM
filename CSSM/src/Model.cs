@@ -1,39 +1,52 @@
 ﻿using Queues;
 using Structures;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace CSSM {
-	class Model {
+	class Model : INotifyPropertyChanged {
 		public Model() {
 			Clock = new SystemClock();
-			deviceQueue = new FIFOQueue<Process, SimpleArray<Process>>(new SimpleArray<Process>());
-			readyQueue = new Queues.PriorityQueue<Process, BinaryHeap<Process>>(new BinaryHeap<Process>());
 
-			//q = new Structures.BinarySearchTree
-			modelSettings = new Settings();
+			Cpu = new Resource();
+
+			Device1 = new Resource();
+			Device2 = new Resource();
+			Device3 = new Resource();
+
+			Ram = new Memory();
+
 			idGen = new IdGenerator();
-			processRand = new Random();
-			cpu = new Resource();
-			device = new Resource();
-			cpuScheduler = new CPUScheduler(cpu, readyQueue);
-			deviceScheduler = new DeviceScheduler(device, deviceQueue);
+
+			readyQueue = new Queues.PriorityQueue<Process, BinarySearchTree<Process>>(new BinarySearchTree<Process>());
+
+			deviceQueue1 = new FIFOQueue<Process, SimpleArray<Process>>(new SimpleArray<Process>());
+			deviceQueue2 = new FIFOQueue<Process, SimpleArray<Process>>(new SimpleArray<Process>());
+			deviceQueue3 = new FIFOQueue<Process, SimpleArray<Process>>(new SimpleArray<Process>());
+
+			cpuScheduler = new CPUScheduler(Cpu, readyQueue);
+
 			memoryManager = new MemoryManager();
-			ram = new Memory();
+
+			deviceScheduler1 = new DeviceScheduler(Device1, deviceQueue1);
+			deviceScheduler2 = new DeviceScheduler(Device2, deviceQueue2);
+			deviceScheduler3 = new DeviceScheduler(Device3, deviceQueue3);
+
+			processRand = new Random();
+
+			ModelSettings = new Settings();
 		}
 
 		public void SaveSettings() {
-			ram.Save(modelSettings.ValueOfRAMSize);
-			memoryManager.Save(ram);
+			Ram.Save(ModelSettings.ValueOfRAMSize);
+			memoryManager.Save(Ram);
 		}
 		public void WorkingCycle() {
-			clock.WorkingCycle();
-			if (processRand.NextDouble() <= modelSettings.Intensity) {
-				Process proc = new(idGen.Id,
-					processRand.Next(modelSettings.MinValueOfAddrSpace, modelSettings.MaxValueOfAddrSpace + 1));
+			Clock.WorkingCycle();
+			if (processRand.NextDouble() <= ModelSettings.Intensity) {
+				Process proc = new(idGen.Id, processRand.Next(modelSettings.MinValueOfAddrSpace, modelSettings.MaxValueOfAddrSpace + 1));
 				if (memoryManager.Allocate(proc.AddrSpace) != null) {
-
-					proc.BurstTime = processRand.Next(modelSettings.MinValueOfBurstTime,
-						modelSettings.MaxValueOfBurstTime + 1);
+					proc.BurstTime = processRand.Next(modelSettings.MinValueOfBurstTime, modelSettings.MaxValueOfBurstTime + 1);
 					Subscribe(proc);
 					readyQueue = readyQueue.Put(proc);
 					if (cpu.IsFree()) {
@@ -41,18 +54,60 @@ namespace CSSM {
 					}
 				}
 			}
-			cpu.WorkingCycle();
-			device.WorkingCycle();
-		}
+			Cpu.WorkingCycle();
+			Device1.WorkingCycle();
+			Device2.WorkingCycle();
+			Device3.WorkingCycle();
+		} // TODO: WorkingCycle()
 
 		public void Clear() {
-			cpu.Clear();
-			device.Clear();
-			ram.Clear();
-			readyQueue.Clear();
-			deviceQueue.Clear();
+			Unsubscribe(Cpu);
+			Unsubscribe(Device1);
+			Unsubscribe(Device2);
+			Unsubscribe(Device3);
+
+			Cpu.Clear();
+
+			Device1.Clear();
+			Device2.Clear();
+			Device3.Clear();
+
+			ReadyQueue = readyQueue.Clear();
+
+			DeviceQueue1 = deviceQueue1.Clear();
+			DeviceQueue2 = deviceQueue2.Clear();
+			DeviceQueue3 = deviceQueue3.Clear();
+
+			Clock.Clear();
+			idGen.Clear();
+		}
+		private void Subscribe(Resource resource) {
+			if (resource.ActiveProcess != null)
+				resource.ActiveProcess.FreeingAResource += FreeingResourceEventHandler;
 		}
 
+		private void Unsubscribe(Resource resource) {
+			if (resource.ActiveProcess != null) {
+				resource.ActiveProcess.FreeingAResource -= FreeingResourceEventHandler;
+			}
+		}
+		private void putProcessOnResource(Resource resource) {
+			if (resource == Cpu && resource is not null && resource.ActiveProcess is not null) {
+				ReadyQueue = cpuScheduler.Session();
+				resource.ActiveProcess.CommonWaitingTime += (Clock.Clock - resource.ActiveProcess.ReadyQueueArrivalTime);
+			} else {
+				if (resource == Device1) {
+					DeviceQueue1 = deviceScheduler1.Session();
+				} else if (resource == Device2) {
+					DeviceQueue2 = deviceScheduler2.Session();
+				} else {
+					DeviceQueue3 = deviceScheduler3.Session();
+				}
+			}
+			if (resource is not null) {
+				Subscribe(resource);
+			}
+		}
 		private void FreeingResourceEventHandler(object? sender, EventArgs e) {
 			Process? proc = sender as Process;
 			if (proc.Status == ProcessStatus.waiting) //Процесс покидает внешнее устройство
@@ -94,20 +149,7 @@ namespace CSSM {
 					}
 				}
 			}
-		}
-		public event PropertyChangedEventHandler PropertyChanged;
-		private void Subscribe(Process? proc) {
-			if (proc != null) {
-				proc.FreeingAResource += FreeingResourceEventHandler;
-			}
-		}
-
-		private void Unsubscribe(Process? proc) {
-			if (proc != null) {
-				proc.FreeingAResource -= FreeingResourceEventHandler;
-			}
-		}
-
+		} // TODO: FreeingResourceEventHandler()
 
 		public readonly SystemClock Clock;
 
@@ -139,16 +181,39 @@ namespace CSSM {
 
 		public readonly Settings ModelSettings;
 
-
-
 		public IQueueable<Process> ReadyQueue {
 			get => readyQueue;
-			set => readyQueue = value;
+			set {
+				readyQueue = value;
+				OnPropertyChanged();
+			}
+		}
+		public IQueueable<Process> DeviceQueue1 {
+			get => deviceQueue1;
+			set {
+				deviceQueue1 = value;
+				OnPropertyChanged();
+			}
+		}
+		public IQueueable<Process> DeviceQueue2 {
+			get => deviceQueue2;
+			set {
+				deviceQueue2 = value;
+				OnPropertyChanged();
+			}
+		}
+		public IQueueable<Process> DeviceQueue3 {
+			get => deviceQueue3;
+			set {
+				deviceQueue3 = value;
+				OnPropertyChanged();
+			}
 		}
 
-		public IQueueable<Process> DeviceQueue {
-			get => deviceQueue;
-			set => deviceQueue = value;
+		public event PropertyChangedEventHandler PropertyChanged;
+		private void OnPropertyChanged([CallerMemberName] string propertyName = null) {
+			if (PropertyChanged != null)
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 }

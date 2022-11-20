@@ -8,7 +8,7 @@ namespace CSSM {
 		}
 
 		public override void DataBind() {
-			frm.LblTime.DataBindings.Add(new Binding("Text", model.clock, "Clock"));
+			frm.LblTime.DataBindings.Add(new Binding("Text", model.Clock, "Clock"));
 
 			frm.TbCPU.DataBindings.Add(new Binding("Text", model.Cpu, "ActiveProcess"));
 

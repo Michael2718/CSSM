@@ -55,7 +55,10 @@
         private long workTime;
         public long BurstTime { get; set; }
         public ProcessStatus Status { get; set; }
+        public long ReadyQueueArrivalTime { get; set; }
         public long AddrSpace { get; private set; }
+        public long ArrivalTime { get; set; }
+        public long CommonWaitingTime { get; set; }
 
         private Random random = new Random();
         NewEventArgs newEventArgs = new NewEventArgs();
