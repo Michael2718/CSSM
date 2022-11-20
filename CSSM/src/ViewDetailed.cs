@@ -19,28 +19,34 @@ namespace CSSM {
 			frm.LblFreeRam.DataBindings.Add(new Binding("Text", model.Ram, "FreeSize"));
 			frm.LblOccupiedRam.DataBindings.Add(new Binding("Text", model.Ram, "OccupiedSize"));
 
-			Binding intestityBinding = new Binding("Value", model.ModelSettings, "Intensity");
-			intestityBinding.ControlUpdateMode = ControlUpdateMode.Never;
+			Binding intestityBinding = new("Value", model.ModelSettings, "Intensity") {
+				ControlUpdateMode = ControlUpdateMode.Never
+			};
 			frm.NudProcIntensity.DataBindings.Add(intestityBinding);
 
-			Binding minBurstTimeBinding = new Binding("Value", model.ModelSettings, "MinBurstTime");
-			minBurstTimeBinding.ControlUpdateMode = ControlUpdateMode.Never;
+			Binding minBurstTimeBinding = new("Value", model.ModelSettings, "MinBurstTime") {
+				ControlUpdateMode = ControlUpdateMode.Never
+			};
 			frm.NudMinBurstTime.DataBindings.Add(minBurstTimeBinding);
 
-			Binding maxBurstTimeBinding = new Binding("Value", model.ModelSettings, "MaxBurstTime");
-			maxBurstTimeBinding.ControlUpdateMode = ControlUpdateMode.Never;
+			Binding maxBurstTimeBinding = new("Value", model.ModelSettings, "MaxBurstTime") {
+				ControlUpdateMode = ControlUpdateMode.Never
+			};
 			frm.NudMaxBurstTime.DataBindings.Add(maxBurstTimeBinding);
 
-			Binding ramSizeBinding = new Binding("SelectedItem", model.ModelSettings, "ValueOfRAMSize");
-			ramSizeBinding.ControlUpdateMode = ControlUpdateMode.Never;
+			Binding ramSizeBinding = new("SelectedItem", model.ModelSettings, "ValueOfRAMSize") {
+				ControlUpdateMode = ControlUpdateMode.Never
+			};
 			frm.CbRamSize.DataBindings.Add(ramSizeBinding);
 
-			Binding minAddrSpaceBinding = new Binding("Value", model.ModelSettings, "MinCpuSize");
-			minAddrSpaceBinding.ControlUpdateMode = ControlUpdateMode.Never;
+			Binding minAddrSpaceBinding = new("Value", model.ModelSettings, "MinCpuSize") {
+				ControlUpdateMode = ControlUpdateMode.Never
+			};
 			frm.NudMinAddrSpace.DataBindings.Add(minAddrSpaceBinding);
 
-			Binding maxAddrSpaceBinding = new Binding("Value", model.ModelSettings, "MaxCpuSize");
-			maxAddrSpaceBinding.ControlUpdateMode = ControlUpdateMode.Never;
+			Binding maxAddrSpaceBinding = new("Value", model.ModelSettings, "MaxCpuSize") {
+				ControlUpdateMode = ControlUpdateMode.Never
+			};
 			frm.NudMaxAddrSpace.DataBindings.Add(maxAddrSpaceBinding);
 
 			Subscribe();
@@ -63,18 +69,23 @@ namespace CSSM {
 			model.PropertyChanged -= PropertyChangedHandler;
 		}
 		private void PropertyChangedHandler(object? sender, PropertyChangedEventArgs e) {
-			/*            if(e.PropertyName == "ReadyQueue") {
-							SortedUnsorterQueue<Process> temp = (SortedUnsorterQueue<Process>)model.ReadyQueue;
-							updateListBox(temp.Sorted, frm.LblSortedCPUQueue);
-							updateListBox(temp.Unsorted, frm.LblUnsortedCPUQueue);
-						} else {
-							updateListBox(model.DeviceQueue, frm.LblDeviceQueue);
-							updateListBox(model.DeviceQueue_2, frm.LblDeviceQueue_2);
-						}*/
-		}
+            if (e.PropertyName == "ReadyQueue")
+                updateListBox(model.ReadyQueue, frm.LblCPUQueue);
+            else {
+                updateListBox(model.DeviceQueue1, frm.LblDeviceQueue1);
+                updateListBox(model.DeviceQueue2, frm.LblDeviceQueue2);
+                updateListBox(model.DeviceQueue3, frm.LblDeviceQueue3);
+            }
+        }
 
-		private void UpdateListBox(IQueueable<Process> queue, ListBox lb) { }
-		private FrmDetailed frm;
+        private void updateListBox(IQueueable<Process> queue, ListBox lb) {
+            lb.Items.Clear();
+			if (queue.Count != 0) {
+				lb.Items.AddRange(queue.ToArray());
+			}
+        }
+
+        private readonly FrmDetailed frm;
 	}
 
 }
