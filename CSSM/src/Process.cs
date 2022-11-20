@@ -14,21 +14,19 @@
         }
 
         public void IncreaseWorkTime() {
-            if (workTime < BurstTime) {
-                workTime++;
-                return;
-            } else if (workTime == BurstTime) {
+            workTime++;
+            if (workTime == BurstTime) {
                 if (Status == ProcessStatus.running) {
                     Status = random.Next(0, 4) == 0 ? ProcessStatus.terminated : ProcessStatus.waiting;
                     if (Status == ProcessStatus.waiting) {
-                        newEventArgs.DeviceNumber = (int)random.Next(1, 4);
-                        OnFreeingAResource(newEventArgs);
+                        device.DeviceNumber = (int)random.Next(1, 4);
+                        OnFreeingAResource(device);
                         return;
                     }
                 } else {
                     Status = ProcessStatus.ready;
                 }
-                OnFreeingAResource(newEventArgs);
+                OnFreeingAResource(device);
             }
         }
 
@@ -37,8 +35,8 @@
         }
 
         public override string ToString() {
-            return "Proc: " + name + ' ' + id + " BurstTime: " + BurstTime + " WorkTime: "
-                + workTime + " Status: " + Status;
+            return "Proc: " + name + " Status: " + Status + " BurstTime: " + BurstTime.ToString() +
+                " WorkTime: " + workTime.ToString() + " AddrSpace: " + AddrSpace.ToString();
         }
         public int CompareTo(Process? otherProc) {
             if (otherProc == null) {
@@ -47,7 +45,7 @@
             return otherProc.BurstTime.CompareTo(BurstTime);
         }
 
-        private void OnFreeingAResource(NewEventArgs? e = null) {
+        private void OnFreeingAResource(ResourceEventArgs? e = null) {
             FreeingAResource?.Invoke(this, e);
         }
         private long id;
@@ -62,7 +60,7 @@
         public long LeftTime => BurstTime - workTime;
 
         private readonly Random random = new();
-        readonly NewEventArgs newEventArgs = new();
+        readonly ResourceEventArgs device = new();
         public event EventHandler FreeingAResource;
     }
 }

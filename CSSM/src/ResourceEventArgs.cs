@@ -1,5 +1,5 @@
 ﻿namespace CSSM {
-    public class NewEventArgs : EventArgs {
+    public class ResourceEventArgs : EventArgs {
         public int DeviceNumber { get; set; }
     }
 }

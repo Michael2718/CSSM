@@ -11,11 +11,11 @@ namespace CSSM {
 		}
 
 		public TextBox TbCPU => tbCPU;
-		public ListBox LbCPUQueue => lbCPUQueue;
 		public TextBox TbDevice1 => tbDevice1;
 		public TextBox TbDevice2 => tbDevice2;
 		public TextBox TbDevice3 => tbDevice3;
-		public ListBox LbDeviceQueue1 => lbDeviceQueue1;
+        public ListBox LbCPUQueue => lbCPUQueue;
+        public ListBox LbDeviceQueue1 => lbDeviceQueue1;
 		public ListBox LbDeviceQueue2 => lbDeviceQueue2;
 		public ListBox LbDeviceQueue3 => lbDeviceQueue3;
 
@@ -34,10 +34,11 @@ namespace CSSM {
 			SessionPreparation();
 			viewDetailed.ReactToUserActions(ModelOperations.SaveSettings);
 			if (rbAutoMode.Checked) {
-				timerAutoMode = new Timer();
-				timerAutoMode.Enabled = true;
-				timerAutoMode.Interval = 1000;
-				timerAutoMode.Tick += bWorkingCycle_Click;
+                timerAutoMode = new Timer {
+                    Enabled = true,
+                    Interval = 1000
+                };
+                timerAutoMode.Tick += bWorkingCycle_Click;
 			}
 		}
 		private void bWorkingCycle_Click(object sender, EventArgs e) {
@@ -73,6 +74,8 @@ namespace CSSM {
 			cbRamSize.SelectedItem = cbRamSize.Items[0];
 			nudMinAddrSpace.Value = 100;
 			nudMaxAddrSpace.Value = 260;
+			lblFreeRam.Text = cbRamSize.Items[0].ToString();
+			lblOccupiedRam.Text = "0";
 		}
 		private void EndOfSession() {
 			bClear.Enabled = false;
@@ -88,6 +91,12 @@ namespace CSSM {
 
 			rbManualMode.Enabled = true;
 			rbAutoMode.Enabled = true;
-		}
+
+			TbCPU.Text = "";
+			TbDevice1.Text = "";
+            TbDevice2.Text = "";
+            TbDevice3.Text = "";
+			LblTime.Text = "0";
+        }
 	}
 }

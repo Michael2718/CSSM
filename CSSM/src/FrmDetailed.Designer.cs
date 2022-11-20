@@ -116,7 +116,7 @@
             this.tbCPU.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbCPU.Name = "tbCPU";
             this.tbCPU.ReadOnly = true;
-            this.tbCPU.Size = new System.Drawing.Size(434, 27);
+            this.tbCPU.Size = new System.Drawing.Size(450, 27);
             this.tbCPU.TabIndex = 2;
             // 
             // tbDevice1
@@ -125,7 +125,7 @@
             this.tbDevice1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbDevice1.Name = "tbDevice1";
             this.tbDevice1.ReadOnly = true;
-            this.tbDevice1.Size = new System.Drawing.Size(431, 27);
+            this.tbDevice1.Size = new System.Drawing.Size(450, 27);
             this.tbDevice1.TabIndex = 3;
             // 
             // bSaveSettings
@@ -580,7 +580,7 @@
             this.tbDevice2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbDevice2.Name = "tbDevice2";
             this.tbDevice2.ReadOnly = true;
-            this.tbDevice2.Size = new System.Drawing.Size(431, 27);
+            this.tbDevice2.Size = new System.Drawing.Size(450, 27);
             this.tbDevice2.TabIndex = 3;
             // 
             // groupBox13
@@ -629,7 +629,7 @@
             this.tbDevice3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbDevice3.Name = "tbDevice3";
             this.tbDevice3.ReadOnly = true;
-            this.tbDevice3.Size = new System.Drawing.Size(431, 27);
+            this.tbDevice3.Size = new System.Drawing.Size(450, 27);
             this.tbDevice3.TabIndex = 3;
             // 
             // groupBox15

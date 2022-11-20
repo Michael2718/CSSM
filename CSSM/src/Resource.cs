@@ -3,8 +3,8 @@ using System.Runtime.CompilerServices;
 
 namespace CSSM {
     class Resource : INotifyPropertyChanged {
-        private Process? activeProcess;
-        public Process? ActiveProcess {
+        private Process activeProcess;
+        public Process ActiveProcess {
             get => activeProcess;
             set {
                 activeProcess = value;

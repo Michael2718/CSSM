@@ -17,8 +17,8 @@ namespace CSSM {
 			Ram = new Memory();
 
 			idGen = new IdGenerator();
-
-			readyQueue = new Queues.PriorityQueue<Process, BinaryHeap<Process>>(new BinaryHeap<Process>());
+				
+			readyQueue = new Queues.PriorityQueue<Process, BinarySearchTree<Process>>(new BinarySearchTree<Process>());
 
 			deviceQueue1 = new FIFOQueue<Process, SimpleArray<Process>>(new SimpleArray<Process>());
 			deviceQueue2 = new FIFOQueue<Process, SimpleArray<Process>>(new SimpleArray<Process>());
@@ -48,14 +48,14 @@ namespace CSSM {
 				if (memoryManager.Allocate(process.AddrSpace) != null) {
                     process.ArrivalTime = Clock.Clock;
                     process.BurstTime = processRand.Next(ModelSettings.MinBurstTime, ModelSettings.MaxBurstTime + 1);
-					readyQueue = readyQueue.Put(process);
+					ReadyQueue = readyQueue.Put(process);
                     process.ReadyQueueArrivalTime = Clock.Clock;
                     if (Cpu.IsFree()) {
 						putProcessOnResource(Cpu);
                     }
 				}
 			}
-            if (cpuScheduler.MoreCheck() && cpuScheduler.Check()) {
+            if (cpuScheduler.Check()) {
                 Unsubscribe(Cpu);
                 ReadyQueue = cpuScheduler.Switch();
                 Subscribe(Cpu);
@@ -98,7 +98,10 @@ namespace CSSM {
 			}
 		}
 		private void putProcessOnResource(Resource resource) {
-			if (resource == Cpu && resource is not null && resource.ActiveProcess is not null) {
+/*			if (resource is null || resource.ActiveProcess is null) {
+                throw new Exception("Resource or ActiveProcess is null");
+            }*/
+			if (resource == Cpu) {
 				ReadyQueue = cpuScheduler.Session();
 				resource.ActiveProcess.CommonWaitingTime += (Clock.Clock - resource.ActiveProcess.ReadyQueueArrivalTime);
 			} else {
@@ -110,22 +113,24 @@ namespace CSSM {
 					DeviceQueue3 = deviceScheduler3.Session();
 				}
 			}
-			if (resource is not null) {
-				Subscribe(resource);
-			}
+			Subscribe(resource);
 		}
 		private void FreeingResourceEventHandler(object sender, EventArgs e) {
-			Process? process = sender as Process;
-			NewEventArgs? device = e as NewEventArgs;
+            Process? process = sender as Process;
+			ResourceEventArgs? device = e as ResourceEventArgs;
 
-			if (process is not null && process.Status == ProcessStatus.terminated) {
+            if (process is null || device is null) {
+                throw new Exception("Resource or ActiveProcess is null");
+            }
+
+            if (process.Status == ProcessStatus.terminated) {
 				Unsubscribe(Cpu);
 				Cpu.Clear();
 				memoryManager.Free(process.AddrSpace);
 				if (readyQueue.Count != 0) {
 					putProcessOnResource(Cpu);
 				}
-			} else if (process is not null && process.Status == ProcessStatus.waiting && device is not null) {
+			} else if (process.Status == ProcessStatus.waiting) {
 				Unsubscribe(Cpu);
 				Cpu.Clear();
 				if (readyQueue.Count != 0) {
@@ -151,7 +156,7 @@ namespace CSSM {
 						putProcessOnResource(Device3);
 					}
 				}
-			} else if (process is not null && process.Status == ProcessStatus.ready && device is not null) {
+			} else if (process.Status == ProcessStatus.ready) {
 				if (device.DeviceNumber == 1) {
 					Unsubscribe(Device1);
 					Device1.Clear();
