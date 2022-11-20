@@ -12,7 +12,7 @@ namespace CSSM {
             }
         }
         public void WorkingCycle() {
-            clock++;
+           Clock++;
         }
         public void Clear() {
             clock = 0;

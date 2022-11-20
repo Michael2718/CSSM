@@ -336,8 +336,9 @@
             this.lblTime.Location = new System.Drawing.Point(42, 48);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(17, 20);
-            this.lblTime.TabIndex = 34;
+            this.lblTime.TabIndex = 4;
             this.lblTime.Text = "0";
+            this.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox9
             // 

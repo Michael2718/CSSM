@@ -70,6 +70,7 @@ namespace CSSM {
 			nudProcIntensity.Value = (decimal)0.5;
 			nudMinBurstTime.Value = 1;
 			nudMaxBurstTime.Value = 4;
+			cbRamSize.SelectedItem = cbRamSize.Items[0];
 			nudMinAddrSpace.Value = 100;
 			nudMaxAddrSpace.Value = 260;
 		}
