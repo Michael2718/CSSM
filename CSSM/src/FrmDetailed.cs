@@ -31,7 +31,7 @@ namespace CSSM {
 		public Label LblOccupiedRam => lblOccupiedRam;
 
 		private void bSaveSettings_Click(object sender, EventArgs e) {
-			sessionPreparation();
+			SessionPreparation();
 			viewDetailed.ReactToUserActions(ModelOperations.SaveSettings);
 			if (rbAutoMode.Checked) {
 				timerAutoMode = new Timer();
@@ -48,10 +48,10 @@ namespace CSSM {
 				timerAutoMode.Enabled = false;
 			}
 			viewDetailed.ReactToUserActions(ModelOperations.Clear);
-			endOfSession();
+			EndOfSession();
 			UpdateSettings();
 		}
-		private void sessionPreparation() {
+		private void SessionPreparation() {
 			bSaveSettings.Enabled = false;
 			bClear.Enabled = true;
 			bWorkingCycle.Enabled = rbManualMode.Checked;
@@ -72,7 +72,7 @@ namespace CSSM {
 			nudMinAddrSpace.Value = 25;
 			nudMaxAddrSpace.Value = 125;
 		}
-		private void endOfSession() {
+		private void EndOfSession() {
 			bClear.Enabled = false;
 			bSaveSettings.Enabled = true;
 			bWorkingCycle.Enabled = false;
