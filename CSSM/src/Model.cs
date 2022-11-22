@@ -35,7 +35,9 @@ namespace CSSM {
 			processRand = new Random();
 
 			ModelSettings = new Settings();
-		}
+
+            statistics = new Statistics(Clock);
+        }
 
 		public void SaveSettings() {
 			Ram.Save(ModelSettings.RamSize);
@@ -52,8 +54,10 @@ namespace CSSM {
                     process.ReadyQueueArrivalTime = Clock.Clock;
                     if (Cpu.IsFree()) {
 						putProcessOnResource(Cpu);
+						statistics.IncCPUFreeTime();
                     }
-				}
+                    statistics.IncArrivalProcessCount();
+                }
 			}
             if (cpuScheduler.Check()) {
                 Unsubscribe(Cpu);
@@ -99,8 +103,8 @@ namespace CSSM {
 		}
 		private void putProcessOnResource(Resource resource) {
 /*			if (resource is null || resource.ActiveProcess is null) {
-                throw new Exception("Resource or ActiveProcess is null");
-            }*/
+				throw new Exception("Resource or ActiveProcess is null");
+			}*/
 			if (resource == Cpu) {
 				ReadyQueue = cpuScheduler.Session();
 				resource.ActiveProcess.CommonWaitingTime += (Clock.Clock - resource.ActiveProcess.ReadyQueueArrivalTime);
@@ -130,6 +134,7 @@ namespace CSSM {
 				if (readyQueue.Count != 0) {
 					putProcessOnResource(Cpu);
 				}
+				statistics.IncTerminatedProcessCount();
 			} else if (process.Status == ProcessStatus.waiting) {
 				Unsubscribe(Cpu);
 				Cpu.Clear();
@@ -217,6 +222,7 @@ namespace CSSM {
 		private Random processRand;
 
 		public readonly Settings ModelSettings;
+		public readonly Statistics statistics;
 
 		public IQueueable<Process> ReadyQueue {
 			get => readyQueue;

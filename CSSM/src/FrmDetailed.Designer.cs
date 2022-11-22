@@ -86,6 +86,10 @@
             this.lbDeviceQueue3 = new System.Windows.Forms.ListBox();
             this.label18 = new System.Windows.Forms.Label();
             this.timerAutoMode = new System.Windows.Forms.Timer(this.components);
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.lblCPUUtilization = new System.Windows.Forms.Label();
+            this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.lblThroughput = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudProcIntensity)).BeginInit();
             this.groupBox7.SuspendLayout();
@@ -107,6 +111,8 @@
             this.groupBox14.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.groupBox16.SuspendLayout();
+            this.groupBox17.SuspendLayout();
+            this.groupBox18.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbCPU
@@ -692,11 +698,51 @@
             this.label18.TabIndex = 29;
             this.label18.Text = "Черга до зовнішнього пристрою 1";
             // 
+            // groupBox17
+            // 
+            this.groupBox17.Controls.Add(this.lblCPUUtilization);
+            this.groupBox17.Location = new System.Drawing.Point(10, 709);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(227, 53);
+            this.groupBox17.TabIndex = 46;
+            this.groupBox17.TabStop = false;
+            this.groupBox17.Text = "Завантаженність процесору";
+            // 
+            // lblCPUUtilization
+            // 
+            this.lblCPUUtilization.AutoSize = true;
+            this.lblCPUUtilization.Location = new System.Drawing.Point(9, 23);
+            this.lblCPUUtilization.Name = "lblCPUUtilization";
+            this.lblCPUUtilization.Size = new System.Drawing.Size(17, 20);
+            this.lblCPUUtilization.TabIndex = 0;
+            this.lblCPUUtilization.Text = "0";
+            // 
+            // groupBox18
+            // 
+            this.groupBox18.Controls.Add(this.lblThroughput);
+            this.groupBox18.Location = new System.Drawing.Point(245, 709);
+            this.groupBox18.Name = "groupBox18";
+            this.groupBox18.Size = new System.Drawing.Size(227, 53);
+            this.groupBox18.TabIndex = 46;
+            this.groupBox18.TabStop = false;
+            this.groupBox18.Text = "Продуктивність процесору";
+            // 
+            // lblThroughput
+            // 
+            this.lblThroughput.AutoSize = true;
+            this.lblThroughput.Location = new System.Drawing.Point(9, 23);
+            this.lblThroughput.Name = "lblThroughput";
+            this.lblThroughput.Size = new System.Drawing.Size(17, 20);
+            this.lblThroughput.TabIndex = 0;
+            this.lblThroughput.Text = "0";
+            // 
             // FrmDetailed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(950, 715);
+            this.ClientSize = new System.Drawing.Size(950, 774);
+            this.Controls.Add(this.groupBox18);
+            this.Controls.Add(this.groupBox17);
             this.Controls.Add(this.groupBox14);
             this.Controls.Add(this.groupBox13);
             this.Controls.Add(this.groupBox16);
@@ -742,6 +788,10 @@
             this.groupBox14.PerformLayout();
             this.groupBox15.ResumeLayout(false);
             this.groupBox16.ResumeLayout(false);
+            this.groupBox17.ResumeLayout(false);
+            this.groupBox17.PerformLayout();
+            this.groupBox18.ResumeLayout(false);
+            this.groupBox18.PerformLayout();
             this.ResumeLayout(false);
 
 		}
@@ -805,6 +855,10 @@
         private Label label18;
         private ComboBox cbRamSize;
         private System.Windows.Forms.Timer timerAutoMode;
+        private GroupBox groupBox17;
+        private Label lblCPUUtilization;
+        private GroupBox groupBox18;
+        private Label lblThroughput;
     }
 }
 

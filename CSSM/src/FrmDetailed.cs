@@ -29,8 +29,10 @@ namespace CSSM {
 		public Label LblTime => lblTime;
 		public Label LblFreeRam => lblFreeRam;
 		public Label LblOccupiedRam => lblOccupiedRam;
+        public Label LblCPUUtilization => lblCPUUtilization;
+        public Label LblThroughput => lblThroughput;
 
-		private void bSaveSettings_Click(object sender, EventArgs e) {
+        private void bSaveSettings_Click(object sender, EventArgs e) {
 			SessionPreparation();
 			viewDetailed.ReactToUserActions(ModelOperations.SaveSettings);
 			if (rbAutoMode.Checked) {
@@ -91,12 +93,6 @@ namespace CSSM {
 
 			rbManualMode.Enabled = true;
 			rbAutoMode.Enabled = true;
-
-			TbCPU.Text = "";
-			TbDevice1.Text = "";
-            TbDevice2.Text = "";
-            TbDevice3.Text = "";
-			LblTime.Text = "0";
         }
 	}
 }

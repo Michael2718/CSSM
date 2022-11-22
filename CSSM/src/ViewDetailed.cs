@@ -49,7 +49,15 @@ namespace CSSM {
 			};
 			frm.NudMaxAddrSpace.DataBindings.Add(maxAddrSpaceBinding);
 
-			Subscribe();
+			Binding CpuUtilizationBinding = new("Text", model.statistics, "CpuUtilization", true,
+												 DataSourceUpdateMode.Never, null, "#0.##%");
+			frm.LblCPUUtilization.DataBindings.Add(CpuUtilizationBinding);
+
+            Binding CpuThroughputBinding = new("Text", model.statistics, "Throughput", true,
+                                     DataSourceUpdateMode.Never, null, "#0.##%");
+            frm.LblThroughput.DataBindings.Add(CpuThroughputBinding);
+
+            Subscribe();
 		}
 
 		public override void DataUnbind() {
@@ -59,6 +67,18 @@ namespace CSSM {
 			frm.CbRamSize.DataBindings.RemoveAt(0);
 			frm.NudMinAddrSpace.DataBindings.RemoveAt(0);
 			frm.NudMaxAddrSpace.DataBindings.RemoveAt(0);
+
+			frm.TbCPU.DataBindings.RemoveAt(0);
+			frm.TbDevice1.DataBindings.RemoveAt(0);
+            frm.TbDevice2.DataBindings.RemoveAt(0);
+            frm.TbDevice3.DataBindings.RemoveAt(0);
+
+            frm.LblTime.DataBindings.RemoveAt(0);
+            frm.LblOccupiedRam.DataBindings.RemoveAt(0);
+            frm.LblFreeRam.DataBindings.RemoveAt(0);
+
+            frm.LblCPUUtilization.DataBindings.RemoveAt(0);
+			frm.LblThroughput.DataBindings.RemoveAt(0);
 
 			Unsubscribe();
 		}
