@@ -68,17 +68,17 @@ namespace CSSM {
 			frm.NudMinAddrSpace.DataBindings.RemoveAt(0);
 			frm.NudMaxAddrSpace.DataBindings.RemoveAt(0);
 
-			frm.TbCPU.DataBindings.RemoveAt(0);
-			frm.TbDevice1.DataBindings.RemoveAt(0);
-            frm.TbDevice2.DataBindings.RemoveAt(0);
-            frm.TbDevice3.DataBindings.RemoveAt(0);
+			/*			frm.TbCPU.DataBindings.RemoveAt(0);
+						frm.TbDevice1.DataBindings.RemoveAt(0);
+						frm.TbDevice2.DataBindings.RemoveAt(0);
+						frm.TbDevice3.DataBindings.RemoveAt(0);*/
 
-            frm.LblTime.DataBindings.RemoveAt(0);
-            frm.LblOccupiedRam.DataBindings.RemoveAt(0);
-            frm.LblFreeRam.DataBindings.RemoveAt(0);
+/*			frm.LblTime.DataBindings.RemoveAt(0);
+			frm.LblOccupiedRam.DataBindings.RemoveAt(0);
+			frm.LblFreeRam.DataBindings.RemoveAt(0);*/
 
-            frm.LblCPUUtilization.DataBindings.RemoveAt(0);
-			frm.LblThroughput.DataBindings.RemoveAt(0);
+			/*            frm.LblCPUUtilization.DataBindings.RemoveAt(0);
+						frm.LblThroughput.DataBindings.RemoveAt(0);*/
 
 			Unsubscribe();
 		}

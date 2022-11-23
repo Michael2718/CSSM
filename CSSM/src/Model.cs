@@ -45,18 +45,18 @@ namespace CSSM {
 		}
 		public void WorkingCycle() {
 			Clock.WorkingCycle();
-			if (processRand.NextDouble() <= ModelSettings.Intensity) {
+            if (processRand.NextDouble() <= ModelSettings.Intensity) {
 				Process process = new(idGen.Id, processRand.Next(ModelSettings.MinAddrSpace, ModelSettings.MaxAddrSpace + 1));
-				if (memoryManager.Allocate(process.AddrSpace) != null) {
+                statistics.ArrivalProcessesCount++;
+                if (memoryManager.Allocate(process.AddrSpace) != null) {
                     process.ArrivalTime = Clock.Clock;
                     process.BurstTime = processRand.Next(ModelSettings.MinBurstTime, ModelSettings.MaxBurstTime + 1);
 					ReadyQueue = readyQueue.Put(process);
                     process.ReadyQueueArrivalTime = Clock.Clock;
                     if (Cpu.IsFree()) {
 						putProcessOnResource(Cpu);
-						statistics.IncCPUFreeTime();
+                        statistics.CpuFreeTime++;
                     }
-                    statistics.IncArrivalProcessCount();
                 }
 			}
             if (cpuScheduler.Check()) {
@@ -71,18 +71,17 @@ namespace CSSM {
 		}
 
 		public void Clear() {
-			Unsubscribe(Cpu);
-			Unsubscribe(Device1);
-			Unsubscribe(Device2);
-			Unsubscribe(Device3);
+            Unsubscribe(Cpu);
+            Unsubscribe(Device1);
+            Unsubscribe(Device2);
+            Unsubscribe(Device3);
 
-			Cpu.Clear();
-
+            Cpu.Clear();
 			Device1.Clear();
 			Device2.Clear();
 			Device3.Clear();
 
-			ReadyQueue = readyQueue.Clear();
+            ReadyQueue = readyQueue.Clear();
 
 			DeviceQueue1 = deviceQueue1.Clear();
 			DeviceQueue2 = deviceQueue2.Clear();
@@ -90,14 +89,16 @@ namespace CSSM {
 
 			Clock.Clear();
 			idGen.Clear();
+
+			statistics.Clear();
 		}
 		private void Subscribe(Resource resource) {
-			if (resource.ActiveProcess != null)
+			if (resource.ActiveProcess is not null)
 				resource.ActiveProcess.FreeingAResource += FreeingResourceEventHandler;
 		}
 
 		private void Unsubscribe(Resource resource) {
-			if (resource.ActiveProcess != null) {
+			if (resource.ActiveProcess is not null) {
 				resource.ActiveProcess.FreeingAResource -= FreeingResourceEventHandler;
 			}
 		}
@@ -134,7 +135,7 @@ namespace CSSM {
 				if (readyQueue.Count != 0) {
 					putProcessOnResource(Cpu);
 				}
-				statistics.IncTerminatedProcessCount();
+				statistics.TerminatedProcessesCount++;
 			} else if (process.Status == ProcessStatus.waiting) {
 				Unsubscribe(Cpu);
 				Cpu.Clear();

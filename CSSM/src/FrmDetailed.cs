@@ -76,8 +76,6 @@ namespace CSSM {
 			cbRamSize.SelectedItem = cbRamSize.Items[0];
 			nudMinAddrSpace.Value = 100;
 			nudMaxAddrSpace.Value = 260;
-			lblFreeRam.Text = cbRamSize.Items[0].ToString();
-			lblOccupiedRam.Text = "0";
 		}
 		private void EndOfSession() {
 			bClear.Enabled = false;
@@ -93,6 +91,14 @@ namespace CSSM {
 
 			rbManualMode.Enabled = true;
 			rbAutoMode.Enabled = true;
+
+/*			lblFreeRam.Text = cbRamSize.Items[0].ToString();
+			lblOccupiedRam.Text = "0";
+			lblTime.Text = "0";
+			tbCPU.Text = "";
+            tbDevice1.Text = "";
+            tbDevice2.Text = "";
+            tbDevice3.Text = "";*/
         }
-	}
+    }
 }

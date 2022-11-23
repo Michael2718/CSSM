@@ -132,7 +132,7 @@
             this.tbDevice1.Name = "tbDevice1";
             this.tbDevice1.ReadOnly = true;
             this.tbDevice1.Size = new System.Drawing.Size(450, 27);
-            this.tbDevice1.TabIndex = 3;
+            this.tbDevice1.TabIndex = 0;
             // 
             // bSaveSettings
             // 
@@ -587,7 +587,7 @@
             this.tbDevice2.Name = "tbDevice2";
             this.tbDevice2.ReadOnly = true;
             this.tbDevice2.Size = new System.Drawing.Size(450, 27);
-            this.tbDevice2.TabIndex = 3;
+            this.tbDevice2.TabIndex = 0;
             // 
             // groupBox13
             // 
@@ -636,7 +636,7 @@
             this.tbDevice3.Name = "tbDevice3";
             this.tbDevice3.ReadOnly = true;
             this.tbDevice3.Size = new System.Drawing.Size(450, 27);
-            this.tbDevice3.TabIndex = 3;
+            this.tbDevice3.TabIndex = 0;
             // 
             // groupBox15
             // 
