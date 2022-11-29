@@ -164,9 +164,6 @@ namespace CSSM {
             }
         }
         private void PutProcessOnResource(Resource resource) {
-            /*			if (resource is null || resource.ActiveProcess is null) {
-                            throw new Exception("Resource or ActiveProcess is null");
-                        }*/
             if (resource == Cpu) {
                 ReadyQueue = CpuScheduler.Session();
                 resource.ActiveProcess.CommonWaitingTime += (Clock.Clock - resource.ActiveProcess.ReadyQueueArrivalTime);

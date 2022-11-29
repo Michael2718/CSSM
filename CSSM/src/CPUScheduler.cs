@@ -20,9 +20,6 @@ namespace CSSM {
             return resource.ActiveProcess != null && queue.Count != 0 && resource.ActiveProcess.BurstTime > queue.Item().BurstTime;
         }
         public IQueueable<Process> Switch() {
-            if (resource.ActiveProcess is null) {
-                throw new Exception("Resource or ActiveProcess is null");
-            }
             Process newActiveProcess = resource.ActiveProcess;
             newActiveProcess.Status = ProcessStatus.ready;
             resource.ActiveProcess = queue.Item();

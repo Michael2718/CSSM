@@ -16,10 +16,6 @@ namespace CSSM {
             Subscribe();
         }
 
-        public SystemClock CommonTime {
-            get => commonTime;
-            set => commonTime = value;
-        }
         public long TerminatedProcessesCount {
             get => terminatedProcessesCount;
             set {
