@@ -13,16 +13,16 @@ namespace CSSM {
         }
         public void WorkingCycle() {
             if (!IsFree()) {
-                activeProcess.IncreaseWorkTime();
+                ActiveProcess.IncreaseWorkTime();
             }
         }
 
         public bool IsFree() {
-            return activeProcess == null;
+            return ActiveProcess == null;
         }
 
         public void Clear() {
-            activeProcess = null;
+            ActiveProcess = null;
         }
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName] string propertyName = null) {

@@ -15,7 +15,7 @@ namespace CSSM {
            Clock++;
         }
         public void Clear() {
-            clock = 0;
+            Clock = 0;
         }
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName] string propertyName = null) {

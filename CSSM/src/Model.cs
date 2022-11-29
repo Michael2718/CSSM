@@ -80,6 +80,7 @@ namespace CSSM {
 			Device1.Clear();
 			Device2.Clear();
 			Device3.Clear();
+			Ram.Clear();
 
             ReadyQueue = readyQueue.Clear();
 
