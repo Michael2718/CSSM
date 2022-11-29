@@ -1,8 +1,6 @@
 ﻿namespace CSSM {
 	class Controller {
-		public void Execute(ModelOperations operation, Model model) {
-			if (model == null)
-				throw new ArgumentNullException("Empty model");
+		public static void Execute(ModelOperations operation, Model model) {
 			switch (operation) {
 				case ModelOperations.SaveSettings:
 					model.SaveSettings();

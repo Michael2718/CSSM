@@ -6,7 +6,6 @@ namespace CSSM {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmDetailed());
-
         }
     }
 }

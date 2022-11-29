@@ -6,12 +6,26 @@
         terminated
     }
     public class Process : IComparable<Process> {
+        private readonly long id;
+        private readonly string name;
+        private long workTime;
+
+        private readonly Random random = new();
+        readonly ResourceEventArgs device = new();
+        public event EventHandler? FreeingResource;
+
         public Process(long pId, long addrSpace) {
             id = pId;
             AddrSpace = addrSpace;
             name = "P" + pId.ToString();
             Status = ProcessStatus.ready;
         }
+        public long BurstTime { get; set; }
+        public ProcessStatus Status { get; set; }
+        public long ReadyQueueArrivalTime { get; set; }
+        public long AddrSpace { get; private set; }
+        public long ArrivalTime { get; set; }
+        public long CommonWaitingTime { get; set; }
 
         public void IncreaseWorkTime() {
             workTime++;
@@ -29,11 +43,9 @@
                 OnFreeingAResource(device);
             }
         }
-
         public void ResetWorkTime() {
             workTime = 0;
         }
-
         public override string ToString() {
             return "Proc: " + name + " Status: " + Status + " BurstTime: " + BurstTime.ToString() +
                 " WorkTime: " + workTime.ToString() + " AddrSpace: " + AddrSpace.ToString();
@@ -44,23 +56,8 @@
             }
             return otherProc.BurstTime.CompareTo(BurstTime);
         }
-
-        private void OnFreeingAResource(ResourceEventArgs? e = null) {
-            FreeingAResource?.Invoke(this, e);
+        private void OnFreeingAResource(ResourceEventArgs e) {
+            FreeingResource?.Invoke(this, e);
         }
-        private long id;
-        private string name;
-        private long workTime;
-        public long BurstTime { get; set; }
-        public ProcessStatus Status { get; set; }
-        public long ReadyQueueArrivalTime { get; set; }
-        public long AddrSpace { get; private set; }
-        public long ArrivalTime { get; set; }
-        public long CommonWaitingTime { get; set; }
-        public long LeftTime => BurstTime - workTime;
-
-        private readonly Random random = new();
-        readonly ResourceEventArgs device = new();
-        public event EventHandler FreeingAResource;
     }
 }

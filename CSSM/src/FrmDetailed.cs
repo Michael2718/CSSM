@@ -2,15 +2,9 @@
 
 namespace CSSM {
 	public partial class FrmDetailed : Form {
-		private ViewDetailed viewDetailed;
-		public FrmDetailed() {
-			InitializeComponent();
-			cbRamSize.SelectedItem = cbRamSize.Items[0];
-			viewDetailed = new ViewDetailed(new Model(), new Controller(), this);
-			viewDetailed.DataBind();
-		}
+        private readonly ViewDetailed viewDetailed;
 
-		public TextBox TbCPU => tbCPU;
+        public TextBox TbCPU => tbCPU;
 		public TextBox TbDevice1 => tbDevice1;
 		public TextBox TbDevice2 => tbDevice2;
 		public TextBox TbDevice3 => tbDevice3;
@@ -32,7 +26,13 @@ namespace CSSM {
         public Label LblCPUUtilization => lblCPUUtilization;
         public Label LblThroughput => lblThroughput;
 
-        private void bSaveSettings_Click(object sender, EventArgs e) {
+        public FrmDetailed() {
+            InitializeComponent();
+            cbRamSize.SelectedItem = cbRamSize.Items[0];
+            viewDetailed = new ViewDetailed(new Model(), new Controller(), this);
+            viewDetailed.DataBind();
+        }
+        private void BSaveSettings_Click(object? sender, EventArgs e) {
 			SessionPreparation();
 			viewDetailed.ReactToUserActions(ModelOperations.SaveSettings);
 			if (rbAutoMode.Checked) {
@@ -40,13 +40,13 @@ namespace CSSM {
                     Enabled = true,
                     Interval = 1000
                 };
-                timerAutoMode.Tick += bWorkingCycle_Click;
+                timerAutoMode.Tick += BWorkingCycle_Click;
 			}
 		}
-		private void bWorkingCycle_Click(object sender, EventArgs e) {
+		private void BWorkingCycle_Click(object? sender, EventArgs e) {
 			viewDetailed.ReactToUserActions(ModelOperations.WorkingCycle);
 		}
-		private void bClear_Click(object sender, EventArgs e) {
+		private void BClear_Click(object? sender, EventArgs e) {
 			if (rbAutoMode.Checked) {
 				timerAutoMode.Enabled = false;
 			}
@@ -91,14 +91,6 @@ namespace CSSM {
 
 			rbManualMode.Enabled = true;
 			rbAutoMode.Enabled = true;
-
-/*			lblFreeRam.Text = cbRamSize.Items[0].ToString();
-			lblOccupiedRam.Text = "0";
-			lblTime.Text = "0";
-			tbCPU.Text = "";
-            tbDevice1.Text = "";
-            tbDevice2.Text = "";
-            tbDevice3.Text = "";*/
         }
     }
 }

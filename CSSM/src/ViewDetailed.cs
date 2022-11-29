@@ -3,7 +3,9 @@ using System.ComponentModel;
 
 namespace CSSM {
 	class ViewDetailed : View {
-		public ViewDetailed(Model model, Controller controller, FrmDetailed frm) : base(model, controller) {
+        private readonly FrmDetailed frm;
+
+        public ViewDetailed(Model model, Controller controller, FrmDetailed frm) : base(model, controller) {
 			this.frm = frm;
 		}
 
@@ -49,11 +51,11 @@ namespace CSSM {
 			};
 			frm.NudMaxAddrSpace.DataBindings.Add(maxAddrSpaceBinding);
 
-			Binding CpuUtilizationBinding = new("Text", model.statistics, "CpuUtilization", true,
+			Binding CpuUtilizationBinding = new("Text", model.Statistics, "CpuUtilization", true,
 												 DataSourceUpdateMode.Never, null, "#0.##%");
 			frm.LblCPUUtilization.DataBindings.Add(CpuUtilizationBinding);
 
-            Binding CpuThroughputBinding = new("Text", model.statistics, "Throughput", true,
+            Binding CpuThroughputBinding = new("Text", model.Statistics, "Throughput", true,
                                      DataSourceUpdateMode.Never, null, "#0.##%");
             frm.LblThroughput.DataBindings.Add(CpuThroughputBinding);
 
@@ -68,18 +70,6 @@ namespace CSSM {
 			frm.NudMinAddrSpace.DataBindings.RemoveAt(0);
 			frm.NudMaxAddrSpace.DataBindings.RemoveAt(0);
 
-			/*			frm.TbCPU.DataBindings.RemoveAt(0);
-						frm.TbDevice1.DataBindings.RemoveAt(0);
-						frm.TbDevice2.DataBindings.RemoveAt(0);
-						frm.TbDevice3.DataBindings.RemoveAt(0);*/
-
-/*			frm.LblTime.DataBindings.RemoveAt(0);
-			frm.LblOccupiedRam.DataBindings.RemoveAt(0);
-			frm.LblFreeRam.DataBindings.RemoveAt(0);*/
-
-			/*            frm.LblCPUUtilization.DataBindings.RemoveAt(0);
-						frm.LblThroughput.DataBindings.RemoveAt(0);*/
-
 			Unsubscribe();
 		}
 		private void Subscribe() {
@@ -88,25 +78,22 @@ namespace CSSM {
 		private void Unsubscribe() {
 			model.PropertyChanged -= PropertyChangedHandler;
 		}
-		private void PropertyChangedHandler(object sender, PropertyChangedEventArgs e) {
+		private void PropertyChangedHandler(object? sender, PropertyChangedEventArgs e) {
             if (e.PropertyName == "ReadyQueue")
-                updateListBox(model.ReadyQueue, frm.LbCPUQueue);
+                UpdateListBox(model.ReadyQueue, frm.LbCPUQueue);
             else {
-                updateListBox(model.DeviceQueue1, frm.LbDeviceQueue1);
-                updateListBox(model.DeviceQueue2, frm.LbDeviceQueue2);
-                updateListBox(model.DeviceQueue3, frm.LbDeviceQueue3);
+                UpdateListBox(model.DeviceQueue1, frm.LbDeviceQueue1);
+                UpdateListBox(model.DeviceQueue2, frm.LbDeviceQueue2);
+                UpdateListBox(model.DeviceQueue3, frm.LbDeviceQueue3);
             }
         }
 
-        private void updateListBox(IQueueable<Process> queue, ListBox lb) {
+        private static void UpdateListBox(IQueueable<Process> queue, ListBox lb) {
             lb.Items.Clear();
 			if (queue.Count != 0) {
 				lb.Items.AddRange(queue.ToArray());
 			}
         }
-
-        private readonly FrmDetailed frm;
 	}
-
 }
 

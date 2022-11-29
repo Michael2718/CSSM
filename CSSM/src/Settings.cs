@@ -25,13 +25,10 @@
         public int MinAddrSpace {
             get => minAddrSpace;
             set => minAddrSpace = value;
-
         }
         public int MaxAddrSpace {
             get => maxAddrSpace;
             set => maxAddrSpace = value;
-
         }
-
     }
 }

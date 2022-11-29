@@ -4,6 +4,9 @@ using System.Runtime.CompilerServices;
 namespace CSSM {
     public class Memory : INotifyPropertyChanged {
         private long occupiedSize;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
         public long Size { get; private set; }
         public long FreeSize {
             get => Size - occupiedSize;
@@ -17,18 +20,17 @@ namespace CSSM {
                 OnPropertyChanged();
             }
         }
+
         public void Save(long size) {
             Size = size;
             OccupiedSize = 0;
         }
         public void Clear() {
-            FreeSize = 0;
+            FreeSize = Size;
             OccupiedSize = 0;
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null) {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        private void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

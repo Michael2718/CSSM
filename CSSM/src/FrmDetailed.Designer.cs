@@ -143,7 +143,7 @@
             this.bSaveSettings.TabIndex = 11;
             this.bSaveSettings.Text = "Зберігти налаштування";
             this.bSaveSettings.UseVisualStyleBackColor = true;
-            this.bSaveSettings.Click += new System.EventHandler(this.bSaveSettings_Click);
+            this.bSaveSettings.Click += new System.EventHandler(this.BSaveSettings_Click);
             // 
             // bWorkingCycle
             // 
@@ -154,7 +154,7 @@
             this.bWorkingCycle.TabIndex = 12;
             this.bWorkingCycle.Text = "Робочий такт";
             this.bWorkingCycle.UseVisualStyleBackColor = true;
-            this.bWorkingCycle.Click += new System.EventHandler(this.bWorkingCycle_Click);
+            this.bWorkingCycle.Click += new System.EventHandler(this.BWorkingCycle_Click);
             // 
             // bClear
             // 
@@ -165,7 +165,7 @@
             this.bClear.TabIndex = 13;
             this.bClear.Text = "Очищення";
             this.bClear.UseVisualStyleBackColor = true;
-            this.bClear.Click += new System.EventHandler(this.bClear_Click);
+            this.bClear.Click += new System.EventHandler(this.BClear_Click);
             // 
             // rbManualMode
             // 

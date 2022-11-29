@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 namespace CSSM {
     class Resource : INotifyPropertyChanged {
         private Process activeProcess;
+
         public Process ActiveProcess {
             get => activeProcess;
             set {
@@ -24,8 +25,8 @@ namespace CSSM {
         public void Clear() {
             ActiveProcess = null;
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null) {
+        public event PropertyChangedEventHandler? PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }

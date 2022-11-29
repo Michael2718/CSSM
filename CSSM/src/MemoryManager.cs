@@ -1,10 +1,16 @@
 ﻿namespace CSSM {
     public class MemoryManager {
+        private Memory memory;
+
+        public MemoryManager() {
+            this.memory = new Memory();
+        }
+
         public void Save(Memory memory) {
             this.memory = memory;
         }
 
-        public Memory Allocate(long size) {
+        public Memory? Allocate(long size) {
             if (size <= memory.FreeSize) {
                 memory.OccupiedSize += size;
                 return memory;
@@ -16,6 +22,5 @@
             memory.OccupiedSize -= size;
             return memory;
         }
-        private Memory memory;
     }
 }
