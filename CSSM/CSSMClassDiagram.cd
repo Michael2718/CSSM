@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CSSM.Controller">
+    <Position X="2.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Controller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSSM.CPUScheduler">
+    <Position X="8" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAaAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\CPUScheduler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSSM.DeviceScheduler">
+    <Position X="8" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAADAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\DeviceScheduler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSSM.FrmDetailed">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>/w8IAiSACCAgg1AhEQGEAQQCxAACIEBBMiCAAiAIgBs=</HashCode>
+      <FileName>src\FrmDetailed.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSSM.IdGenerator">
+    <Position X="13.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAgA=</HashCode>
+      <FileName>src\IdGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSSM.Memory" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IgAAAIAAAAAAgAAAIAAAAAAAgAAAAAAAAAAAACBAAAA=</HashCode>
+      <FileName>src\Memory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSSM.MemoryManager">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAI=</HashCode>
+      <FileName>src\MemoryManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSSM.Model" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAICAAAAAKMAlIIAQAAiAgEACAAAQQgAAAGDJAgA=</HashCode>
+      <FileName>src\Model.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSSM.Process" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAQAAAGAAAAAgREAAAAGAAAAAAEAAACAQQAAAAABgA=</HashCode>
+      <FileName>src\Process.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSSM.Program">
+    <Position X="15.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>src\Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSSM.Resource" BaseTypeListCollapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAIAAAAAAAAEAIAAAAAAAgAAAAAEAAAAAAABAAAA=</HashCode>
+      <FileName>src\Resource.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSSM.ResourceEventArgs">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\ResourceEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSSM.Settings">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEEAAAAAAEAAAAAAAAAAAAAIAAAACAAAAAQBQABFAQA=</HashCode>
+      <FileName>src\Settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSSM.Statistics" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAECAAABAAAIABAAAAAwAACIGAAAAQgAABAgAA=</HashCode>
+      <FileName>src\Statistics.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSSM.SystemClock" BaseTypeListCollapsed="true">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAIAAAAAAAgAAAAAAAAAACAABAAgA=</HashCode>
+      <FileName>src\SystemClock.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CSSM.View">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAASAAAAAAAAAAAAAAAAACAAAAAAAAQAAIAAA=</HashCode>
+      <FileName>src\View.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CSSM.ViewDetailed">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAACAAAAAAAQAACAEAAQAAAQAAAAAA=</HashCode>
+      <FileName>src\ViewDetailed.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="CSSM.ModelOperations">
+    <Position X="0.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>src\ModelOperations.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="CSSM.ProcessStatus">
+    <Position X="6.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAQAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>src\Process.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
